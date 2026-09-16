@@ -1,0 +1,263 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,300&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap');
+
+.pd-section{padding:2.5rem 0 2rem;font-family:'Plus Jakarta Sans',system-ui,sans-serif;}
+.pd-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:1.5rem;gap:12px;}
+.pd-title-wrap{}
+.pd-tag{display:inline-flex;align-items:center;gap:6px;background:#fde8df;color:#993C1D;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:4px 12px;border-radius:999px;margin-bottom:8px;}
+.pd-tag-dot{width:6px;height:6px;border-radius:50%;background:#D85A30;}
+.pd-title{font-family:'Fraunces',Georgia,serif;font-size:26px;font-weight:800;letter-spacing:-.025em;color:var(--color-text-primary);line-height:1.1;margin:0;}
+.pd-title em{font-style:italic;font-weight:300;color:#D85A30;}
+.pd-nav{display:flex;gap:8px;flex-shrink:0;}
+.pd-btn{width:40px;height:40px;border-radius:50%;border:0.5px solid var(--color-border-secondary);background:var(--color-background-primary);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;color:var(--color-text-primary);}
+.pd-btn:hover{background:#D85A30;border-color:#D85A30;color:#fff;}
+.pd-btn:active{transform:scale(.95);}
+.pd-btn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;}
+.pd-btn:disabled{opacity:.3;pointer-events:none;}
+
+.pd-track-wrap{overflow:hidden;border-radius:16px;}
+.pd-track{display:flex;gap:14px;transition:transform .45s cubic-bezier(0.22,1,0.36,1);will-change:transform;}
+
+.pd-card{flex:0 0 148px;background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:16px;padding:0;overflow:hidden;cursor:pointer;transition:border-color .25s,transform .25s;text-decoration:none;color:inherit;display:block;}
+.pd-card:hover{border-color:#D85A30;transform:translateY(-4px);}
+.pd-card-img{width:100%;aspect-ratio:1;background:var(--color-background-secondary);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.pd-card-img svg{width:62px;height:62px;transition:transform .3s;}
+.pd-card:hover .pd-card-img svg{transform:scale(1.1);}
+.pd-card-badge{position:absolute;top:8px;right:8px;font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 7px;border-radius:6px;background:#fde8df;color:#993C1D;}
+.pd-card-body{padding:12px 14px 14px;}
+.pd-card-name{font-size:13.5px;font-weight:600;color:var(--color-text-primary);margin:0 0 4px;}
+.pd-card-sub{font-size:11.5px;color:var(--color-text-secondary);margin:0;line-height:1.4;}
+.pd-card-arrow{display:flex;align-items:center;gap:4px;margin-top:10px;font-size:11px;font-weight:600;color:#D85A30;opacity:0;transform:translateX(-4px);transition:all .2s;}
+.pd-card-arrow svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;}
+.pd-card:hover .pd-card-arrow{opacity:1;transform:none;}
+
+.pd-dots{display:flex;align-items:center;gap:6px;margin-top:1.25rem;justify-content:center;}
+.pd-dot{width:6px;height:6px;border-radius:50%;background:var(--color-border-secondary);transition:all .25s;cursor:pointer;}
+.pd-dot.active{width:20px;border-radius:3px;background:#D85A30;}
+</style>
+
+<div class="pd-section">
+  <div class="pd-header">
+    <div class="pd-title-wrap">
+      <div class="pd-tag"><span class="pd-tag-dot"></span>What We Print</div>
+      <h2 class="pd-title">Our Print <em>Services</em></h2>
+    </div>
+    <div class="pd-nav">
+      <button class="pd-btn" id="pd-prev" aria-label="Previous" disabled>
+        <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button class="pd-btn" id="pd-next" aria-label="Next">
+        <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="pd-track-wrap">
+    <div class="pd-track" id="pd-track">
+
+      <a href="#" class="pd-card">
+        <div class="pd-card-img" style="background:#fde8df;">
+          <span class="pd-card-badge">Popular</span>
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="8" y="18" width="48" height="30" rx="4" stroke="#D85A30" stroke-width="2.5"/>
+            <path d="M8 26h48" stroke="#D85A30" stroke-width="2.5"/>
+            <rect x="14" y="32" width="14" height="10" rx="2" fill="#D85A30" opacity=".25"/>
+            <path d="M34 33h14M34 38h10" stroke="#D85A30" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="pd-card-body">
+          <p class="pd-card-name">Business Cards</p>
+          <p class="pd-card-sub">Matte, gloss & textured stocks</p>
+          <div class="pd-card-arrow">Order Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </a>
+
+      <a href="#" class="pd-card">
+        <div class="pd-card-img" style="background:#fdf3df;">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="12" width="36" height="44" rx="3" stroke="#BA7517" stroke-width="2.5"/>
+            <rect x="18" y="12" width="36" height="44" rx="3" stroke="#BA7517" stroke-width="2.5" opacity=".4"/>
+            <path d="M17 24h22M17 31h22M17 38h14" stroke="#BA7517" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="pd-card-body">
+          <p class="pd-card-name">Catalogues</p>
+          <p class="pd-card-sub">Saddle-stitch or perfect bound</p>
+          <div class="pd-card-arrow" style="color:#BA7517;">Order Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </a>
+
+      <a href="#" class="pd-card">
+        <div class="pd-card-img" style="background:#e1f5ee;">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="8" y="14" width="48" height="36" rx="3" stroke="#0F6E56" stroke-width="2.5"/>
+            <path d="M8 22h48" stroke="#0F6E56" stroke-width="2"/>
+            <path d="M14 30h10M14 36h16" stroke="#0F6E56" stroke-width="2" stroke-linecap="round"/>
+            <rect x="36" y="28" width="16" height="10" rx="2" fill="#0F6E56" opacity=".2" stroke="#0F6E56" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="pd-card-body">
+          <p class="pd-card-name">Letterheads</p>
+          <p class="pd-card-sub">All sizes, instant delivery</p>
+          <div class="pd-card-arrow" style="color:#0F6E56;">Order Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </a>
+
+      <a href="#" class="pd-card">
+        <div class="pd-card-img" style="background:#eeedfe;">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="8" y="10" width="48" height="44" rx="3" stroke="#534AB7" stroke-width="2.5"/>
+            <path d="M8 22h48" stroke="#534AB7" stroke-width="2"/>
+            <path d="M20 14h24" stroke="#534AB7" stroke-width="2" stroke-linecap="round"/>
+            <path d="M14 30h36M14 37h28M14 44h20" stroke="#534AB7" stroke-width="1.8" stroke-linecap="round" opacity=".5"/>
+          </svg>
+        </div>
+        <div class="pd-card-body">
+          <p class="pd-card-name">Brochures</p>
+          <p class="pd-card-sub">Bi-fold, tri-fold & gate-fold</p>
+          <div class="pd-card-arrow" style="color:#534AB7;">Order Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </a>
+
+      <a href="#" class="pd-card">
+        <div class="pd-card-img" style="background:#fbeaf0;">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="10" width="44" height="44" rx="3" stroke="#993556" stroke-width="2.5"/>
+            <path d="M22 10v44" stroke="#993556" stroke-width="2"/>
+            <path d="M16 20h4M16 28h4M16 36h4M28 20h20M28 28h16M28 36h12" stroke="#993556" stroke-width="1.8" stroke-linecap="round" opacity=".6"/>
+          </svg>
+        </div>
+        <div class="pd-card-body">
+          <p class="pd-card-name">Flyers & Pamphlets</p>
+          <p class="pd-card-sub">Custom sizes, double-sided</p>
+          <div class="pd-card-arrow" style="color:#993556;">Order Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </a>
+
+      <a href="#" class="pd-card">
+        <div class="pd-card-img" style="background:#e6f1fb;">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="14" y="24" width="36" height="24" rx="3" stroke="#185FA5" stroke-width="2.5"/>
+            <path d="M14 36l16-8 20 8" stroke="#185FA5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="32" cy="16" r="6" stroke="#185FA5" stroke-width="2.5"/>
+            <path d="M26 22l-8 2M38 22l8 2" stroke="#185FA5" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="pd-card-body">
+          <p class="pd-card-name">Certificates</p>
+          <p class="pd-card-sub">Heavyweight with gold foil</p>
+          <div class="pd-card-arrow" style="color:#185FA5;">Order Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </a>
+
+      <a href="#" class="pd-card">
+        <div class="pd-card-img" style="background:#eaf3de;">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="8" y="8" width="30" height="48" rx="3" stroke="#3B6D11" stroke-width="2.5"/>
+            <rect x="26" y="8" width="30" height="48" rx="3" stroke="#3B6D11" stroke-width="2.5" opacity=".4"/>
+            <path d="M14 20h18M14 27h18M14 34h12" stroke="#3B6D11" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="pd-card-body">
+          <p class="pd-card-name">Books & Magazines</p>
+          <p class="pd-card-sub">Studio-grade colour output</p>
+          <div class="pd-card-arrow" style="color:#3B6D11;">Order Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </a>
+
+      <a href="#" class="pd-card">
+        <div class="pd-card-img" style="background:#faeeda;">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="14" width="44" height="36" rx="3" stroke="#854F0B" stroke-width="2.5"/>
+            <rect x="18" y="22" width="28" height="20" rx="2" fill="#854F0B" opacity=".12" stroke="#854F0B" stroke-width="1.8"/>
+            <circle cx="27" cy="30" r="3" fill="#854F0B" opacity=".4"/>
+            <path d="M18 42l10-12 8 8 4-4 8 8" stroke="#854F0B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="pd-card-body">
+          <p class="pd-card-name">Posters & Signage</p>
+          <p class="pd-card-sub">A0 to custom large formats</p>
+          <div class="pd-card-arrow" style="color:#854F0B;">Order Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </a>
+
+      <a href="#" class="pd-card">
+        <div class="pd-card-img" style="background:#fde8df;">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="16" y="8" width="32" height="40" rx="3" stroke="#993C1D" stroke-width="2.5"/>
+            <circle cx="32" cy="52" r="4" stroke="#993C1D" stroke-width="2.5"/>
+            <path d="M32 48v-4" stroke="#993C1D" stroke-width="2" stroke-linecap="round"/>
+            <path d="M22 20h20M22 27h16M22 34h12" stroke="#993C1D" stroke-width="1.8" stroke-linecap="round" opacity=".5"/>
+            <circle cx="44" cy="14" r="5" fill="#fde8df" stroke="#993C1D" stroke-width="2"/>
+            <path d="M41.5 14l2 2 3-3" stroke="#993C1D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="pd-card-body">
+          <p class="pd-card-name">Stickers & Labels</p>
+          <p class="pd-card-sub">Die-cut, roll or sheet form</p>
+          <div class="pd-card-arrow">Order Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </a>
+
+      <a href="#" class="pd-card">
+        <div class="pd-card-img" style="background:#f1efe8;">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 16h24v32H20z" rx="2" stroke="#5F5E5A" stroke-width="2.5"/>
+            <rect x="20" y="16" width="24" height="32" rx="2" stroke="#5F5E5A" stroke-width="2.5"/>
+            <circle cx="32" cy="10" r="4" stroke="#5F5E5A" stroke-width="2.5"/>
+            <path d="M32 14v2" stroke="#5F5E5A" stroke-width="2" stroke-linecap="round"/>
+            <path d="M26 30h12M26 36h8" stroke="#5F5E5A" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="pd-card-body">
+          <p class="pd-card-name">Hang Tags</p>
+          <p class="pd-card-sub">Shaped, laminated or punched</p>
+          <div class="pd-card-arrow" style="color:#5F5E5A;">Order Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <div class="pd-dots" id="pd-dots"></div>
+</div>
+
+<script>
+(function(){
+  const track = document.getElementById('pd-track');
+  const prev = document.getElementById('pd-prev');
+  const next = document.getElementById('pd-next');
+  const dotsEl = document.getElementById('pd-dots');
+
+  const cards = track.querySelectorAll('.pd-card');
+  const total = cards.length;
+  const CARD_W = 148;
+  const GAP = 14;
+  const VISIBLE = 4;
+  const STEP = CARD_W + GAP;
+  const maxIndex = total - VISIBLE;
+  let cur = 0;
+  const dotCount = maxIndex + 1;
+
+  for(let i = 0; i <= maxIndex; i++){
+    const d = document.createElement('button');
+    d.className = 'pd-dot' + (i===0?' active':'');
+    d.setAttribute('aria-label','Go to slide '+(i+1));
+    d.addEventListener('click',()=>goTo(i));
+    dotsEl.appendChild(d);
+  }
+
+  function goTo(idx){
+    cur = Math.max(0, Math.min(idx, maxIndex));
+    track.style.transform = `translateX(-${cur * STEP}px)`;
+    prev.disabled = cur === 0;
+    next.disabled = cur >= maxIndex;
+    dotsEl.querySelectorAll('.pd-dot').forEach((d,i)=>d.classList.toggle('active', i===cur));
+  }
+
+  prev.addEventListener('click', ()=>goTo(cur - 1));
+  next.addEventListener('click', ()=>goTo(cur + 1));
+  goTo(0);
+})();
+</script>

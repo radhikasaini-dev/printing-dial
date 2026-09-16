@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Loan Assistance — Propfolio | Unlock Your Dreams</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --gold:#C4973A;
+  --gold-light:#E8C97A;
+  --gold-pale:#F9F1E0;
+  --deep:#1A1208;
+  --cream:#FAF6EE;
+  --warm:#FFFDF8;
+  --text:#2A1F0A;
+  --muted:#7A6840;
+  --border:rgba(196,151,58,0.18);
+  --border-s:rgba(196,151,58,0.45);
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'DM Sans',sans-serif;
+  --r:16px;--r-sm:8px;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--warm);color:var(--text);overflow-x:hidden;line-height:1.7}
+.container{max-width:1160px;margin:0 auto;padding:0 28px}
+h1,h2,h3,h4{font-family:var(--serif);line-height:1.2}
+h1{font-size:clamp(2.4rem,6vw,4.2rem);font-weight:500}
+h2{font-size:clamp(1.9rem,4vw,3rem);font-weight:500}
+h3{font-size:clamp(1.1rem,2.2vw,1.45rem);font-weight:500}
+p{color:var(--muted);line-height:1.85}
+a{text-decoration:none}
+
+/* eyebrow */
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:10.5px;font-weight:500;letter-spacing:0.14em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:14px
+}
+.eyebrow::before{content:'';width:28px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+.eyebrow.center{justify-content:center}
+.eyebrow.light{color:var(--gold-light)}
+.eyebrow.light::before{background:linear-gradient(90deg,transparent,var(--gold-light))}
+
+/* gold rule */
+.rule{width:52px;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold-light));border-radius:2px;margin:22px 0}
+.rule.center{margin:22px auto}
+
+/* image placeholder */
+.img-ph{
+  background:linear-gradient(135deg,#EDE0C8,#D9C89E);
+  border-radius:var(--r);display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:10px;
+  color:var(--gold);font-size:12px;font-weight:500;
+  text-align:center;border:1px dashed var(--border-s);padding:24px;
+  font-family:var(--sans)
+}
+
+/* scroll fade-up */
+.fu{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.fu.vis{opacity:1;transform:none}
+.fu:nth-child(2){transition-delay:.1s}.fu:nth-child(3){transition-delay:.2s}
+.fu:nth-child(4){transition-delay:.3s}.fu:nth-child(5){transition-delay:.4s}
+.fu:nth-child(6){transition-delay:.5s}
+
+/* ══ NAV ══ */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(255,253,248,.93);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1160px;margin:0 auto;padding:0 28px;
+  height:68px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--serif);font-size:1.45rem;font-weight:600;color:var(--deep)}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:26px;list-style:none}
+.nav-links a{font-size:13px;color:var(--muted);transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.nav-btn{padding:10px 22px;border-radius:100px;background:var(--gold);
+  color:#fff;font-size:13px;font-weight:500;transition:background .2s,transform .2s}
+.nav-btn:hover{background:#B08028;transform:translateY(-1px)}
+.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+.ham span{display:block;width:22px;height:1.5px;background:var(--text);border-radius:2px}
+.mob-menu{display:none;position:fixed;inset:68px 0 0;
+  background:var(--warm);z-index:99;padding:32px 28px;
+  flex-direction:column;gap:22px;border-top:1px solid var(--border)}
+.mob-menu.open{display:flex}
+.mob-menu a{font-family:var(--serif);font-size:1.15rem;color:var(--text)}
+.mob-menu a:hover{color:var(--gold)}
+
+/* ══ SECTION 1 — HERO ══ */
+#hero{
+  padding:148px 0 0;background:var(--deep);
+  position:relative;overflow:hidden
+}
+#hero::before{content:'';position:absolute;top:-100px;right:-100px;
+  width:700px;height:700px;
+  background:radial-gradient(circle,rgba(196,151,58,.1),transparent 65%);pointer-events:none}
+.hero-wm{
+  position:absolute;bottom:-50px;right:-10px;
+  font-family:var(--serif);font-size:clamp(90px,16vw,240px);
+  font-weight:600;color:rgba(255,255,255,.022);
+  white-space:nowrap;letter-spacing:.06em;pointer-events:none;user-select:none
+}
+.hero-corner{position:absolute;top:32px;left:32px;width:60px;height:60px;
+  border-top:1.5px solid rgba(196,151,58,.35);border-left:1.5px solid rgba(196,151,58,.35)}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:flex-end;position:relative;z-index:1}
+.hero-content{padding-bottom:64px}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(196,151,58,.12);border:1px solid rgba(196,151,58,.3);
+  border-radius:100px;padding:6px 16px;font-size:12px;
+  color:var(--gold-light);margin-bottom:22px;font-weight:500
+}
+.hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);animation:blink 1.6s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+#hero h1{color:#fff;margin-bottom:14px}
+#hero h1 em{font-style:italic;color:var(--gold-light);display:block}
+.hero-rule{width:52px;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold-light));border-radius:2px;margin:22px 0}
+#hero p{color:rgba(255,255,255,.5);max-width:460px;font-size:1.05rem}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.hero-tag{display:flex;align-items:center;gap:7px;
+  background:rgba(196,151,58,.1);border:1px solid rgba(196,151,58,.25);
+  border-radius:100px;padding:6px 14px;font-size:12px;color:rgba(255,255,255,.6)}
+.hero-tag::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--gold)}
+/* hero image panel — sits flush at bottom */
+.hero-img-panel{
+  position:relative;align-self:flex-end;
+}
+.hero-img-panel .img-ph{
+  min-height:480px;border-radius:var(--r) var(--r) 0 0;
+  background:linear-gradient(145deg,#2E2010,#3D2D12);
+  border:1px dashed rgba(196,151,58,.35);border-bottom:none
+}
+.hero-float{
+  position:absolute;bottom:32px;left:-28px;
+  background:rgba(26,18,8,.88);backdrop-filter:blur(12px);
+  border:1px solid rgba(196,151,58,.3);border-radius:14px;
+  padding:16px 20px;min-width:190px;
+  animation:slideR .7s 1s ease both
+}
+@keyframes slideR{from{opacity:0;transform:translateX(-12px)}to{opacity:1;transform:none}}
+.hf-label{font-size:10px;color:rgba(255,255,255,.35);letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}
+.hf-val{font-family:var(--serif);font-size:1.5rem;color:var(--gold-light)}
+.hf-sub{font-size:11px;color:rgba(255,255,255,.3);margin-top:2px}
+
+/* ══ SECTION 2 — INTRO SPLIT ══ */
+#intro{padding:100px 0;background:var(--warm)}
+.intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.intro-img .img-ph{min-height:440px}
+#intro h2{color:var(--deep);margin-bottom:14px}
+#intro p{margin-bottom:14px}
+.intro-quote{
+  margin-top:26px;padding:20px 24px;
+  border-left:3px solid var(--gold);background:var(--gold-pale);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;
+  font-family:var(--serif);font-size:1.05rem;font-style:italic;color:var(--deep);line-height:1.6
+}
+
+/* ══ SECTION 3 — STATS BAR ══ */
+#stats{padding:72px 0;background:var(--deep);position:relative;overflow:hidden}
+#stats::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:800px;height:280px;background:radial-gradient(ellipse,rgba(196,151,58,.1),transparent 65%)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);position:relative;z-index:1}
+.stat-item{text-align:center;padding:36px 16px;border-right:1px solid rgba(196,151,58,.15)}
+.stat-item:last-child{border-right:none}
+.stat-num{font-family:var(--serif);font-size:clamp(2.2rem,4.5vw,3.4rem);
+  font-weight:500;color:var(--gold-light);line-height:1;margin-bottom:8px}
+.stat-label{font-size:13px;color:rgba(255,255,255,.45)}
+.stat-sub{font-size:10px;color:rgba(196,151,58,.55);margin-top:4px;letter-spacing:.06em;text-transform:uppercase}
+
+/* ══ SECTION 4 — HOW WE HELP ══ */
+#how{padding:100px 0;background:var(--cream)}
+.how-header{text-align:center;margin-bottom:56px}
+.how-header h2{color:var(--deep);margin-bottom:10px}
+.how-header p{margin:0 auto;max-width:540px;text-align:center}
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;position:relative}
+/* connecting line */
+.steps-grid::before{
+  content:'';position:absolute;top:36px;left:10%;right:10%;
+  height:1px;background:linear-gradient(90deg,transparent,var(--border-s),transparent)
+}
+.step-card{
+  background:var(--warm);border:1px solid var(--border);border-radius:var(--r);
+  padding:28px 20px;text-align:center;
+  transition:transform .25s,box-shadow .25s,border-color .25s;
+  position:relative;z-index:1
+}
+.step-card:hover{transform:translateY(-5px);box-shadow:0 14px 40px rgba(196,151,58,.12);border-color:var(--border-s)}
+.step-num{
+  width:56px;height:56px;border-radius:50%;
+  background:var(--gold-pale);border:2px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-size:1.4rem;font-weight:600;color:var(--gold);
+  margin:0 auto 18px
+}
+.step-card h3{color:var(--deep);font-size:1rem;margin-bottom:8px}
+.step-card p{font-size:13.5px;max-width:100%}
+
+/* ══ SECTION 5 — LOAN TYPES ══ */
+#types{padding:100px 0;background:var(--warm)}
+.types-header{text-align:center;margin-bottom:56px}
+.types-header h2{color:var(--deep);margin-bottom:10px}
+.types-header p{margin:0 auto;max-width:520px;text-align:center}
+.types-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.type-card{
+  background:var(--cream);border:1px solid var(--border);border-radius:var(--r);
+  overflow:hidden;transition:transform .25s,box-shadow .25s
+}
+.type-card:hover{transform:translateY(-5px);box-shadow:0 14px 40px rgba(196,151,58,.12)}
+.type-top{
+  padding:28px 24px 22px;position:relative;overflow:hidden
+}
+.type-top::before{
+  content:'';position:absolute;top:-40px;right:-40px;width:140px;height:140px;
+  border-radius:50%;background:radial-gradient(circle,rgba(196,151,58,.18),transparent 70%)
+}
+.type-icon{font-size:32px;margin-bottom:14px}
+.type-card h3{color:var(--deep);margin-bottom:8px;font-size:1.15rem}
+.type-card .type-top p{font-size:13.5px;max-width:100%}
+.type-bottom{
+  border-top:1px solid var(--border);padding:18px 24px;
+  display:flex;flex-direction:column;gap:8px
+}
+.type-feat{
+  display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text)
+}
+.type-feat::before{
+  content:'';flex-shrink:0;width:6px;height:6px;border-radius:50%;background:var(--gold)
+}
+/* featured card */
+.type-card.featured{background:var(--deep);border-color:var(--gold)}
+.type-card.featured .type-top h3{color:#fff}
+.type-card.featured .type-top p{color:rgba(255,255,255,.5)}
+.type-card.featured .type-bottom{border-top:1px solid rgba(196,151,58,.2)}
+.type-card.featured .type-feat{color:rgba(255,255,255,.7)}
+.type-card.featured .type-feat::before{background:var(--gold-light)}
+.feat-badge{
+  display:inline-block;margin-bottom:12px;
+  background:var(--gold);color:#fff;
+  font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
+  padding:4px 12px;border-radius:100px
+}
+
+/* ══ SECTION 6 — BANK PARTNERS ══ */
+#banks{padding:80px 0;background:var(--cream)}
+.banks-header{text-align:center;margin-bottom:44px}
+.banks-header h2{color:var(--deep);margin-bottom:10px}
+.banks-header p{margin:0 auto;max-width:500px;text-align:center}
+.banks-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.bank-card{
+  background:var(--warm);border:1px solid var(--border);border-radius:var(--r-sm);
+  padding:20px 16px;text-align:center;
+  transition:border-color .2s,transform .2s,box-shadow .2s
+}
+.bank-card:hover{border-color:var(--border-s);transform:translateY(-3px);box-shadow:0 8px 28px rgba(196,151,58,.1)}
+.bank-icon{font-size:28px;margin-bottom:10px}
+.bank-name{font-family:var(--serif);font-size:1rem;color:var(--deep);margin-bottom:4px}
+.bank-tag{font-size:11px;color:var(--gold);font-weight:500;letter-spacing:.04em}
+.zero-fee-strip{
+  margin-top:32px;padding:22px 32px;
+  background:var(--deep);border-radius:var(--r);
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px
+}
+.zfs-text h3{font-family:var(--serif);font-size:1.4rem;color:#fff;margin-bottom:4px}
+.zfs-text p{font-size:13.5px;color:rgba(255,255,255,.45);max-width:100%}
+.btn-gold{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:13px 28px;border-radius:100px;
+  background:linear-gradient(135deg,var(--gold),#B08028);
+  color:#fff;font-family:var(--sans);font-size:13.5px;font-weight:500;
+  transition:transform .2s,box-shadow .2s;white-space:nowrap
+}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(196,151,58,.35)}
+
+/* ══ SECTION 7 — ELIGIBILITY CHECKER ══ */
+#eligibility{padding:100px 0;background:var(--warm)}
+.elig-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.elig-content h2{color:var(--deep);margin-bottom:14px}
+.elig-content p{margin-bottom:20px}
+.elig-list{display:flex;flex-direction:column;gap:14px;margin-top:8px}
+.elig-item{
+  display:flex;align-items:flex-start;gap:14px;
+  background:var(--cream);border:1px solid var(--border);
+  border-radius:var(--r-sm);padding:16px 18px;
+  transition:border-color .2s,background .2s
+}
+.elig-item:hover{border-color:var(--border-s);background:var(--gold-pale)}
+.ei-icon{
+  flex-shrink:0;width:38px;height:38px;border-radius:10px;
+  background:var(--gold-pale);border:1px solid var(--border-s);
+  display:flex;align-items:center;justify-content:center;font-size:18px
+}
+.ei-title{font-family:var(--serif);font-size:.98rem;color:var(--deep);margin-bottom:3px}
+.ei-desc{font-size:13px;color:var(--muted);max-width:100%}
+/* EMI Calculator card */
+.calc-card{
+  background:var(--cream);border:1px solid var(--border);border-radius:var(--r);
+  padding:36px 32px;
+}
+.calc-card h3{color:var(--deep);margin-bottom:6px;font-size:1.3rem}
+.calc-card > p{font-size:14px;margin-bottom:28px}
+.calc-field{margin-bottom:20px}
+.calc-label{font-size:12px;font-weight:500;color:var(--text);letter-spacing:.04em;margin-bottom:7px;display:block}
+.calc-input{
+  width:100%;padding:12px 16px;border-radius:var(--r-sm);
+  border:1.5px solid var(--border);background:var(--warm);
+  font-family:var(--sans);font-size:14px;color:var(--text);
+  outline:none;transition:border-color .2s
+}
+.calc-input:focus{border-color:var(--gold)}
+.calc-input::placeholder{color:rgba(122,104,64,.4)}
+.calc-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.calc-result{
+  margin-top:24px;padding:18px 20px;
+  background:var(--deep);border-radius:var(--r-sm);
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px
+}
+.cr-label{font-size:12px;color:rgba(255,255,255,.4);letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+.cr-val{font-family:var(--serif);font-size:1.8rem;color:var(--gold-light)}
+.cr-sub{font-size:11px;color:rgba(255,255,255,.3);margin-top:2px}
+.calc-btn{
+  width:100%;padding:14px;border-radius:100px;margin-top:16px;
+  background:linear-gradient(135deg,var(--gold),#B08028);
+  color:#fff;font-family:var(--sans);font-size:14px;font-weight:500;
+  border:none;cursor:pointer;transition:transform .2s,box-shadow .2s
+}
+.calc-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(196,151,58,.35)}
+
+/* ══ SECTION 8 — DOCUMENTS REQUIRED ══ */
+#docs{padding:100px 0;background:var(--cream)}
+.docs-header{margin-bottom:52px}
+.docs-header h2{color:var(--deep);margin-bottom:10px}
+.docs-header p{max-width:540px}
+.docs-outer-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.docs-group{
+  background:var(--warm);border:1px solid var(--border);border-radius:var(--r);overflow:hidden
+}
+.dg-head{
+  padding:18px 24px;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:12px
+}
+.dg-icon{font-size:20px}
+.dg-title{font-family:var(--serif);font-size:1.1rem;color:var(--deep)}
+.dg-list{padding:20px 24px;display:flex;flex-direction:column;gap:11px}
+.doc-item{
+  display:flex;align-items:center;gap:12px;font-size:13.5px;color:var(--text);
+  padding:10px 14px;border-radius:var(--r-sm);background:var(--cream);
+  border:1px solid var(--border);transition:border-color .2s,background .2s
+}
+.doc-item:hover{border-color:var(--border-s);background:var(--gold-pale)}
+.doc-check{
+  flex-shrink:0;width:20px;height:20px;border-radius:50%;
+  background:var(--gold-pale);border:1px solid var(--border-s);
+  display:flex;align-items:center;justify-content:center
+}
+.doc-check svg{width:10px;height:10px}
+.docs-note{
+  margin-top:24px;padding:16px 20px;
+  background:rgba(196,151,58,.08);border:1px solid var(--border);
+  border-radius:var(--r-sm);font-size:13px;color:var(--muted)
+}
+.docs-note strong{color:var(--gold)}
+
+/* ══ SECTION 9 — WHY PROPFOLIO FOR LOANS ══ */
+#why{padding:100px 0;background:var(--warm)}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.why-img .img-ph{min-height:480px}
+.why-content h2{color:var(--deep);margin-bottom:14px}
+.why-content p{margin-bottom:20px}
+.why-points{display:flex;flex-direction:column;gap:14px}
+.wp{
+  display:flex;gap:14px;align-items:flex-start;
+  background:var(--cream);border:1px solid var(--border);border-radius:var(--r-sm);
+  padding:16px 18px;transition:border-color .2s,background .2s
+}
+.wp:hover{border-color:var(--border-s);background:var(--gold-pale)}
+.wp-icon{
+  flex-shrink:0;width:38px;height:38px;border-radius:10px;
+  background:var(--gold-pale);border:1px solid var(--border-s);
+  display:flex;align-items:center;justify-content:center;font-size:18px
+}
+.wp-title{font-family:var(--serif);font-size:.98rem;color:var(--deep);margin-bottom:3px}
+.wp-desc{font-size:13px;color:var(--muted);max-width:100%}
+
+/* ══ SECTION 10 — FAQ ══ */
+#faq{padding:100px 0;background:var(--cream)}
+.faq-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:80px;align-items:flex-start}
+.faq-left h2{color:var(--deep);margin-bottom:14px}
+.faq-left p{margin-bottom:24px}
+.faq-img .img-ph{min-height:300px;margin-top:24px}
+.faq-list{display:flex;flex-direction:column;gap:12px}
+.faq-item{
+  background:var(--warm);border:1px solid var(--border);border-radius:var(--r-sm);
+  overflow:hidden;transition:border-color .2s
+}
+.faq-item.open{border-color:var(--border-s)}
+.faq-q{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:18px 20px;cursor:pointer;gap:16px
+}
+.faq-q span{font-family:var(--serif);font-size:1rem;color:var(--deep);line-height:1.4}
+.faq-icon{
+  flex-shrink:0;width:28px;height:28px;border-radius:50%;
+  background:var(--gold-pale);border:1px solid var(--border-s);
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;color:var(--gold);transition:transform .3s
+}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-a{
+  max-height:0;overflow:hidden;transition:max-height .35s ease,padding .3s ease;
+  font-size:13.5px;color:var(--muted);line-height:1.75;padding:0 20px
+}
+.faq-item.open .faq-a{max-height:200px;padding:0 20px 18px}
+
+/* ══ SECTION 11 — CONTACT FORM ══ */
+#contact{padding:100px 0;background:var(--deep);position:relative;overflow:hidden}
+#contact::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:900px;height:400px;background:radial-gradient(ellipse,rgba(196,151,58,.1),transparent 65%)}
+.contact-wm{position:absolute;bottom:-50px;left:50%;transform:translateX(-50%);
+  font-family:var(--serif);font-size:clamp(80px,14vw,200px);font-weight:600;
+  color:rgba(255,255,255,.02);white-space:nowrap;letter-spacing:.08em;pointer-events:none}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:flex-start;position:relative;z-index:1}
+.contact-left h2{color:#fff;margin-bottom:14px}
+.contact-left p{color:rgba(255,255,255,.45);margin-bottom:24px}
+.contact-perks{display:flex;flex-direction:column;gap:14px}
+.cperk{
+  display:flex;align-items:center;gap:14px;
+  background:rgba(255,255,255,.04);border:1px solid rgba(196,151,58,.2);
+  border-radius:var(--r-sm);padding:14px 16px;
+}
+.cperk-icon{font-size:20px;flex-shrink:0}
+.cperk-text{font-size:13.5px;color:rgba(255,255,255,.6)}
+.cperk-text strong{color:var(--gold-light)}
+.contact-info{margin-top:28px;display:flex;flex-direction:column;gap:10px}
+.ci-link{display:flex;align-items:center;gap:10px;
+  font-size:14px;color:rgba(255,255,255,.5);transition:color .2s}
+.ci-link:hover{color:var(--gold-light)}
+.ci-icon{font-size:16px}
+/* Form */
+.form-card{
+  background:var(--warm);border-radius:var(--r);padding:40px 36px
+}
+.form-card h3{font-family:var(--serif);font-size:1.5rem;color:var(--deep);margin-bottom:6px}
+.form-card > p{font-size:14px;margin-bottom:28px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-field{display:flex;flex-direction:column;gap:6px}
+.form-field.full{grid-column:1/-1}
+.form-label{font-size:12px;font-weight:500;color:var(--text);letter-spacing:.04em}
+.form-input,.form-select,.form-textarea{
+  padding:12px 16px;border-radius:var(--r-sm);
+  border:1.5px solid var(--border);background:#fff;
+  font-family:var(--sans);font-size:14px;color:var(--text);
+  outline:none;transition:border-color .2s;width:100%
+}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--gold)}
+.form-input::placeholder,.form-textarea::placeholder{color:rgba(122,104,64,.4)}
+.form-textarea{resize:vertical;min-height:90px}
+.form-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%237A6840' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+.form-submit{
+  width:100%;padding:15px;border-radius:100px;margin-top:8px;
+  background:linear-gradient(135deg,var(--gold),#B08028);
+  color:#fff;font-family:var(--sans);font-size:14px;font-weight:500;
+  border:none;cursor:pointer;transition:transform .2s,box-shadow .2s
+}
+.form-submit:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(196,151,58,.35)}
+.form-note{margin-top:12px;font-size:11px;color:var(--muted);text-align:center;max-width:100%}
+
+/* ══ FOOTER ══ */
+footer{background:var(--deep);border-top:1px solid rgba(255,255,255,.07);padding:28px 0;text-align:center}
+footer p{font-size:12.5px;color:rgba(255,255,255,.25);margin:0 auto;max-width:100%}
+footer a{color:var(--gold)}
+
+/* ══ RESPONSIVE ══ */
+@media(max-width:1024px){
+  .steps-grid{grid-template-columns:repeat(2,1fr)}
+  .steps-grid::before{display:none}
+  .types-grid{grid-template-columns:1fr 1fr}
+  .banks-grid{grid-template-columns:repeat(2,1fr)}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .stat-item{border-right:none;border-bottom:1px solid rgba(196,151,58,.15)}
+  .stat-item:nth-child(odd){border-right:1px solid rgba(196,151,58,.15)}
+  .stat-item:nth-last-child(-n+2){border-bottom:none}
+}
+@media(max-width:900px){
+  .nav-links,.nav-btn{display:none}
+  .ham{display:flex}
+  .hero-grid,.intro-grid,.elig-grid,.why-grid,.faq-grid,.contact-grid{grid-template-columns:1fr;gap:40px}
+  .hero-img-panel{order:-1}
+  .why-img{order:-1}
+  .faq-left .faq-img{display:none}
+  #hero{padding:110px 0 0}
+  .hero-float{left:16px;bottom:16px}
+  .docs-outer-grid{grid-template-columns:1fr}
+  .zero-fee-strip{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:640px){
+  .container{padding:0 18px}
+  h1{font-size:2.1rem}h2{font-size:1.8rem}
+  #hero,#intro,#how,#types,#banks,#eligibility,#docs,#why,#faq,#contact{padding:64px 0}
+  #stats{padding:52px 0}
+  .steps-grid,.types-grid{grid-template-columns:1fr}
+  .banks-grid{grid-template-columns:1fr 1fr}
+  .stats-grid{grid-template-columns:1fr}
+  .stat-item{border-right:none!important;border-bottom:1px solid rgba(196,151,58,.15)}
+  .stat-item:last-child{border-bottom:none}
+  .form-grid{grid-template-columns:1fr}
+  .form-field.full{grid-column:unset}
+  .form-card{padding:28px 20px}
+  .calc-row{grid-template-columns:1fr}
+  .hero-img-panel .img-ph{min-height:280px}
+}
+@media(max-width:400px){
+  .banks-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ════ NAV ════ -->
+<nav>
+  <div class="nav-inner">
+    <a href="https://www.propfolio.in" class="nav-logo">Prop<span>folio</span></a>
+    <ul class="nav-links">
+      <li><a href="https://www.propfolio.in">Home</a></li>
+      <li><a href="https://www.propfolio.in/properties-2">Below 50 Lakh</a></li>
+      <li><a href="https://www.propfolio.in/properties-1">Above 50 Lakh</a></li>
+      <li><a href="https://www.propfolio.in/propfoliomembership">Membership</a></li>
+      <li><a href="#" class="active">Loan Assistance</a></li>
+    </ul>
+    <a href="tel:+918010450460" class="nav-btn">📞 Call Us</a>
+    <button class="ham" id="menuBtn"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mob-menu" id="mobMenu">
+  <a href="https://www.propfolio.in" onclick="closeMob()">Home</a>
+  <a href="https://www.propfolio.in/properties-2" onclick="closeMob()">Below 50 Lakh</a>
+  <a href="https://www.propfolio.in/properties-1" onclick="closeMob()">Above 50 Lakh</a>
+  <a href="https://www.propfolio.in/propfoliomembership" onclick="closeMob()">Membership</a>
+  <a href="#contact" onclick="closeMob()" style="color:var(--gold)">Apply for Loan</a>
+</div>
+
+<!-- ════════════════════════
+  SECTION 1 — HERO
+  IMAGE: Full lifestyle photo — family getting keys / happy couple outside new home
+  Recommended: 580×480px portrait, warm/golden tone
+════════════════════════ -->
+<section id="hero">
+  <div class="hero-corner"></div>
+  <div class="hero-wm">LOAN</div>
+  <div class="container">
+    <div class="hero-grid">
+
+      <div class="hero-content">
+        <div class="hero-badge">Zero Bank Loan Processing Fee</div>
+        <h1>Home Loan <em>Made Simple,</em> Made Free.</h1>
+        <div class="hero-rule"></div>
+        <p>At Propfolio, we don't just help you find your dream home — we make sure you can afford it. Our dedicated loan assistance team guides you through the entire home loan process, from eligibility to disbursement, at absolutely zero processing fee.</p>
+        <div class="hero-tags">
+          <div class="hero-tag">Zero Processing Fee</div>
+          <div class="hero-tag">All Major Banks</div>
+          <div class="hero-tag">Doorstep Service</div>
+          <div class="hero-tag">11 Years Experience</div>
+        </div>
+      </div>
+
+      <div class="hero-img-panel">
+        <!--
+          📸 IMAGE PLACEMENT — HERO RIGHT PANEL
+          Replace this placeholder with:
+          <img src="your-image.jpg" alt="Happy family with home loan approved"/>
+          Use: Family receiving keys / couple celebrating loan approval
+          Size: 580×480px | Warm tone | Portrait crop
+        -->
+        <div class="img-ph" style="min-height:480px;border-radius:var(--r) var(--r) 0 0;background:linear-gradient(145deg,#2E2010,#3D2D12);border:1px dashed rgba(196,151,58,.3);border-bottom:none">
+          📸 Hero Image<br/>Happy family / couple with home loan approved<br/>
+          <span style="font-size:11px;opacity:.6">580×480px | Warm, golden tone</span>
+        </div>
+        <div class="hero-float">
+          <div class="hf-label">Loan Fee Saved</div>
+          <div class="hf-val">₹0</div>
+          <div class="hf-sub">Zero Processing Fee for all clients</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════
+  SECTION 2 — INTRO / WHAT IS LOAN ASSISTANCE
+  IMAGE: Left side — consultant helping client at desk / paperwork session
+  Size: 560×440px | Office / professional tone
+════════════════════════ -->
+<section id="intro">
+  <div class="container">
+    <div class="intro-grid">
+
+      <div class="intro-img fu">
+        <!--
+          📸 IMAGE PLACEMENT — INTRO LEFT
+          Replace with: Propfolio consultant helping client with loan documents
+          OR: A warm photo of a family reviewing loan papers with an executive
+          Size: 560×440px
+        -->
+        <div class="img-ph" style="min-height:440px">
+          📸 Intro Image<br/>Loan consultant helping family at desk<br/>
+          <span style="font-size:11px;opacity:.6">560×440px | Office / professional</span>
+        </div>
+      </div>
+
+      <div class="fu">
+        <div class="eyebrow">What Is Propfolio Loan Assistance?</div>
+        <h2>We Handle the Loan.<br/>You Enjoy the Home.</h2>
+        <div class="rule"></div>
+        <p>Getting a home loan in India can be overwhelming — endless paperwork, confusing eligibility criteria, and hidden charges at every step. Propfolio's Loan Assistance service changes all of that.</p>
+        <p>As one of Greater Noida West's most trusted real estate consultancies with 11 years of experience, we have built strong relationships with all major banks and NBFCs. This means faster approvals, better interest rates, and — most importantly — zero processing fee for you.</p>
+        <div class="intro-quote">
+          "You've found your dream home. Don't let loan hassles stand in your way. Let Propfolio handle everything — from application to approval."
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════
+  SECTION 3 — STATS BAR
+  No image needed — dark background stats strip
+════════════════════════ -->
+<section id="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item fu">
+        <div class="stat-num">₹0</div>
+        <div class="stat-label">Processing Fee</div>
+        <div class="stat-sub">For All Propfolio Clients</div>
+      </div>
+      <div class="stat-item fu">
+        <div class="stat-num">15+</div>
+        <div class="stat-label">Bank & NBFC Partners</div>
+        <div class="stat-sub">All Major Lenders</div>
+      </div>
+      <div class="stat-item fu">
+        <div class="stat-num">72hr</div>
+        <div class="stat-label">Avg. Approval Time</div>
+        <div class="stat-sub">Fast-Track Processing</div>
+      </div>
+      <div class="stat-item fu">
+        <div class="stat-num">5000+</div>
+        <div class="stat-label">Loans Facilitated</div>
+        <div class="stat-sub">Happy Families</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════
+  SECTION 4 — HOW WE HELP (4 STEPS)
+  IMAGE: Background strip image (optional) — hands shaking / loan approved
+  No image required per card, but can add icons
+════════════════════════ -->
+<section id="how">
+  <div class="container">
+    <div class="how-header">
+      <div class="eyebrow center fu">Our Process</div>
+      <h2 class="fu">How Propfolio Loan Assistance Works</h2>
+      <div class="rule center fu"></div>
+      <p class="fu">From your first call to the day your loan is disbursed — our experts are with you at every step. No confusion. No hidden fees. No stress.</p>
+    </div>
+
+    <div class="steps-grid">
+      <div class="step-card fu">
+        <div class="step-num">1</div>
+        <h3>Free Consultation</h3>
+        <p>Speak with our loan advisor — at our office or at your doorstep. We assess your eligibility, income, and budget to find the best loan option for you.</p>
+      </div>
+      <div class="step-card fu">
+        <div class="step-num">2</div>
+        <h3>Document Collection</h3>
+        <p>We guide you through every document required — salary slips, ITR, bank statements — and help you organise your application file perfectly.</p>
+      </div>
+      <div class="step-card fu">
+        <div class="step-num">3</div>
+        <h3>Bank Matching & Application</h3>
+        <p>Based on your profile, we match you with the best bank or NBFC offering the lowest interest rate and fastest approval — and submit your application.</p>
+      </div>
+      <div class="step-card fu">
+        <div class="step-num">4</div>
+        <h3>Approval & Disbursement</h3>
+        <p>We follow up with the bank on your behalf, track progress, and ensure your loan is approved and disbursed as quickly as possible — stress-free.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════
+  SECTION 5 — LOAN TYPES
+  No image per card — icon-led cards
+  Optional: Add a full-width image ABOVE this section
+  Image: Wide banner — new apartment building / families moving in
+  Size: 1160×260px
+════════════════════════ -->
+<section id="types">
+  <div class="container">
+    <div class="types-header">
+      <div class="eyebrow center fu">Loan Options</div>
+      <h2 class="fu">Types of Loans We Assist With</h2>
+      <div class="rule center fu"></div>
+      <p class="fu">Whether you're a first-time buyer, a salaried employee, or self-employed — we have a loan solution tailored for you.</p>
+    </div>
+    <div class="types-grid">
+
+      <div class="type-card fu">
+        <div class="type-top">
+          <div class="type-icon">🏠</div>
+          <h3>Home Purchase Loan</h3>
+          <p>The most common type — for buying a ready-to-move or under-construction residential property anywhere in Noida Extension and Greater Noida.</p>
+        </div>
+        <div class="type-bottom">
+          <div class="type-feat">Up to 90% of property value</div>
+          <div class="type-feat">Tenure up to 30 years</div>
+          <div class="type-feat">Competitive interest rates</div>
+          <div class="type-feat">Both salaried & self-employed</div>
+        </div>
+      </div>
+
+      <div class="type-card featured fu">
+        <div class="type-top">
+          <div class="feat-badge">Most Popular</div>
+          <div class="type-icon">✨</div>
+          <h3>First-Time Buyer Loan</h3>
+          <p>Special schemes and government-backed benefits for first-time homebuyers — including PMAY subsidies and reduced EMI structures.</p>
+        </div>
+        <div class="type-bottom">
+          <div class="type-feat">PMAY subsidy up to ₹2.67 Lakh</div>
+          <div class="type-feat">Lower down payment options</div>
+          <div class="type-feat">Tax benefits under Sec 80C & 24B</div>
+          <div class="type-feat">Zero processing fee via Propfolio</div>
+        </div>
+      </div>
+
+      <div class="type-card fu">
+        <div class="type-top">
+          <div class="type-icon">💼</div>
+          <h3>Self-Employed / Business Owner Loan</h3>
+          <p>Custom loan solutions for business owners, freelancers, and self-employed individuals — with flexible income documentation and ITR-based assessment.</p>
+        </div>
+        <div class="type-bottom">
+          <div class="type-feat">ITR-based income assessment</div>
+          <div class="type-feat">Flexible repayment options</div>
+          <div class="type-feat">Multiple NBFC partners</div>
+          <div class="type-feat">Fast-track processing</div>
+        </div>
+      </div>
+
+      <div class="type-card fu">
+        <div class="type-top">
+          <div class="type-icon">🔄</div>
+          <h3>Loan Balance Transfer</h3>
+          <p>Already have a home loan at a high interest rate? We help you transfer your existing loan to a bank offering better rates and save lakhs over your tenure.</p>
+        </div>
+        <div class="type-bottom">
+          <div class="type-feat">Lower your EMI instantly</div>
+          <div class="type-feat">Top-up loan available</div>
+          <div class="type-feat">Minimal documentation</div>
+          <div class="type-feat">Free balance transfer advisory</div>
+        </div>
+      </div>
+
+      <div class="type-card fu">
+        <div class="type-top">
+          <div class="type-icon">🏗️</div>
+          <h3>Under-Construction Property Loan</h3>
+          <p>Finance your under-construction apartment with a disbursement structure linked to construction milestones — pay interest only on the amount disbursed.</p>
+        </div>
+        <div class="type-bottom">
+          <div class="type-feat">Stage-wise disbursement</div>
+          <div class="type-feat">Pre-EMI interest option</div>
+          <div class="type-feat">Available on all Propfolio projects</div>
+          <div class="type-feat">Builder-bank tie-ups</div>
+        </div>
+      </div>
+
+      <div class="type-card fu">
+        <div class="type-top">
+          <div class="type-icon">🌿</div>
+          <h3>NRI Home Loan</h3>
+          <p>Planning to invest in a home in Greater Noida from abroad? Our NRI loan assistance makes it simple — remote documentation, online process, local support.</p>
+        </div>
+        <div class="type-bottom">
+          <div class="type-feat">Remote / online documentation</div>
+          <div class="type-feat">NRE/NRO account repayment</div>
+          <div class="type-feat">Legal & compliance support</div>
+          <div class="type-feat">Dedicated NRI advisor</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════
+  SECTION 6 — BANK PARTNERS
+  IMAGE: None required — logo strip style
+  Optional: Add bank logos inside .bank-card instead of emoji icons
+════════════════════════ -->
+<section id="banks">
+  <div class="container">
+    <div class="banks-header">
+      <div class="eyebrow center fu">Our Lending Partners</div>
+      <h2 class="fu">All Major Banks & NBFCs</h2>
+      <div class="rule center fu"></div>
+      <p class="fu">We work with every major bank and housing finance company in India to find you the best deal — and negotiate on your behalf.</p>
+    </div>
+    <div class="banks-grid">
+      <div class="bank-card fu">
+        <div class="bank-icon">🏦</div>
+        <div class="bank-name">SBI Home Loans</div>
+        <div class="bank-tag">Govt. Bank Partner</div>
+      </div>
+      <div class="bank-card fu">
+        <div class="bank-icon">🏦</div>
+        <div class="bank-name">HDFC Bank</div>
+        <div class="bank-tag">Preferred Partner</div>
+      </div>
+      <div class="bank-card fu">
+        <div class="bank-icon">🏦</div>
+        <div class="bank-name">ICICI Bank</div>
+        <div class="bank-tag">Fast Approval</div>
+      </div>
+      <div class="bank-card fu">
+        <div class="bank-icon">🏦</div>
+        <div class="bank-name">Axis Bank</div>
+        <div class="bank-tag">Preferred Partner</div>
+      </div>
+      <div class="bank-card fu">
+        <div class="bank-icon">🏦</div>
+        <div class="bank-name">PNB Housing Finance</div>
+        <div class="bank-tag">Best Rates</div>
+      </div>
+      <div class="bank-card fu">
+        <div class="bank-icon">🏦</div>
+        <div class="bank-name">LIC Housing Finance</div>
+        <div class="bank-tag">Long Tenure Options</div>
+      </div>
+      <div class="bank-card fu">
+        <div class="bank-icon">🏦</div>
+        <div class="bank-name">Bajaj Housing Finance</div>
+        <div class="bank-tag">NBFC Partner</div>
+      </div>
+      <div class="bank-card fu">
+        <div class="bank-icon">🏦</div>
+        <div class="bank-name">+ Many More</div>
+        <div class="bank-tag">15+ Lender Network</div>
+      </div>
+    </div>
+    <div class="zero-fee-strip fu">
+      <div class="zfs-text">
+        <h3>Zero Processing Fee — Exclusively for Propfolio Clients</h3>
+        <p>Save ₹10,000 – ₹25,000+ in bank processing fees. A benefit that comes with every Propfolio Membership Card.</p>
+      </div>
+      <a href="#contact" class="btn-gold">Apply for Free →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════
+  SECTION 7 — ELIGIBILITY + EMI CALCULATOR
+  IMAGE: None — calculator card on right
+  Optional: Add a small eligibility graphic or infographic on left
+════════════════════════ -->
+<section id="eligibility">
+  <div class="container">
+    <div class="elig-grid">
+      <div>
+        <div class="eyebrow fu">Am I Eligible?</div>
+        <h2 class="fu">Loan Eligibility<br/>At a Glance</h2>
+        <div class="rule fu"></div>
+        <p class="fu">Wondering if you qualify for a home loan? Here are the basic eligibility criteria — and don't worry, our team will assess your specific profile for free.</p>
+        <div class="elig-list">
+          <div class="elig-item fu">
+            <div class="ei-icon">👤</div>
+            <div>
+              <div class="ei-title">Age Criteria</div>
+              <p class="ei-desc">Minimum 21 years at loan application. Maximum 65–70 years at loan maturity (varies by bank).</p>
+            </div>
+          </div>
+          <div class="elig-item fu">
+            <div class="ei-icon">💰</div>
+            <div>
+              <div class="ei-title">Minimum Income</div>
+              <p class="ei-desc">Salaried: ₹15,000/month net salary. Self-employed: ₹2 Lakh+ annual net profit (ITR based).</p>
+            </div>
+          </div>
+          <div class="elig-item fu">
+            <div class="ei-icon">📊</div>
+            <div>
+              <div class="ei-title">Credit Score</div>
+              <p class="ei-desc">CIBIL score of 700+ recommended for best rates. We assist clients with lower scores too via NBFC partners.</p>
+            </div>
+          </div>
+          <div class="elig-item fu">
+            <div class="ei-icon">🏢</div>
+            <div>
+              <div class="ei-title">Employment Stability</div>
+              <p class="ei-desc">Salaried: Minimum 1 year in current job. Self-employed: Minimum 2 years of business continuity.</p>
+            </div>
+          </div>
+          <div class="elig-item fu">
+            <div class="ei-icon">🌍</div>
+            <div>
+              <div class="ei-title">Nationality</div>
+              <p class="ei-desc">Indian residents and NRIs (Non-Resident Indians) are both eligible. Special NRI loan schemes available.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EMI Calculator -->
+      <div class="calc-card fu">
+        <h3>EMI Calculator</h3>
+        <p>Estimate your monthly EMI in seconds. Our advisor will give you an exact figure.</p>
+        <div class="calc-field">
+          <label class="calc-label">Loan Amount (₹)</label>
+          <input class="calc-input" id="loanAmt" type="number" placeholder="e.g. 3500000" oninput="calcEMI()"/>
+        </div>
+        <div class="calc-row">
+          <div class="calc-field">
+            <label class="calc-label">Interest Rate (%)</label>
+            <input class="calc-input" id="intRate" type="number" placeholder="e.g. 8.5" step="0.1" oninput="calcEMI()"/>
+          </div>
+          <div class="calc-field">
+            <label class="calc-label">Loan Tenure (Years)</label>
+            <input class="calc-input" id="tenure" type="number" placeholder="e.g. 20" oninput="calcEMI()"/>
+          </div>
+        </div>
+        <div class="calc-result">
+          <div>
+            <div class="cr-label">Monthly EMI</div>
+            <div class="cr-val" id="emiResult">₹ —</div>
+            <div class="cr-sub" id="totalResult">Enter details above</div>
+          </div>
+          <div style="text-align:right">
+            <div class="cr-label">Total Amount</div>
+            <div class="cr-val" id="totalAmt">₹ —</div>
+            <div class="cr-sub" id="interestAmt">Total Interest: —</div>
+          </div>
+        </div>
+        <button class="calc-btn" onclick="window.location='#contact'">Get Exact Quote from Our Advisor →</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════
+  SECTION 8 — DOCUMENTS REQUIRED
+  IMAGE: None required — checklist layout
+  Optional: Add a small stack-of-documents illustration above the grid
+════════════════════════ -->
+<section id="docs">
+  <div class="container">
+    <div class="docs-header">
+      <div class="eyebrow fu">Be Prepared</div>
+      <h2 class="fu">Documents Required<br/>for Home Loan</h2>
+      <div class="rule fu"></div>
+      <p class="fu">Having the right documents ready speeds up your approval. Our team helps you organise everything — just bring what you have, and we'll guide the rest.</p>
+    </div>
+    <div class="docs-outer-grid">
+
+      <div class="docs-group fu">
+        <div class="dg-head">
+          <div class="dg-icon">👤</div>
+          <div class="dg-title">Identity & Address Proof</div>
+        </div>
+        <div class="dg-list">
+          <div class="doc-item"><div class="doc-check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="#C4973A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Aadhaar Card</div>
+          <div class="doc-item"><div class="doc-check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="#C4973A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>PAN Card</div>
+          <div class="doc-item"><div class="doc-check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="#C4973A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Passport / Voter ID / Driving Licence</div>
+          <div class="doc-item"><div class="doc-check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="#C4973A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Passport Size Photographs (4)</div>
+          <div class="doc-item"><div class="doc-check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="#C4973A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Utility Bill / Rental Agreement (Address Proof)</div>
+        </div>
+      </div>
+
+      <div class="docs-group fu">
+        <div class="dg-head">
+          <div class="dg-icon">💼</div>
+          <div class="dg-title">For Salaried Applicants</div>
+        </div>
+        <div class="dg-list">
+          <div class="doc-item"><div class="doc-check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="#C4973A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Last 3 months' Salary Slips</div>
+          <div class="doc-item"><div class="doc-check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="#C4973A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Last 6 months' Bank Statements</div>
+          <div class="doc-item"><div class="doc-check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="#C4973A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Form 16 / ITR Last 2 Years</div>
+          <div class="doc-item"><div class="doc-check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="#C4973A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Employment Appointment Letter</div>
+          <div class="doc-item"><div class="doc-check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="#C4973A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Office ID Card / Employee Certificate</div>
+        </div>
+      </div>
+
+      <div class="docs-group fu">
+        <div class="dg-head">
+          <div class="dg-icon">🏢</div>
+          <div class="dg-title">For Self-Employed Applicants</div>
+        </div>
+        <div class="dg-list">
+          <div class="doc-item"><div class="doc-check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="#C4973A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Last 3 Years' ITR with Computation</div>
+          <div class="doc-item"><div class="doc-check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="#C4973A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>CA-certified Profit & Loss Statement</div>
+          <div class="doc-item"><div class="doc-check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="#C4973A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>12 Months' Business Bank Statements</div>
+          <div class="doc-item"><div class="doc-check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="#C4973A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Business Registration Certificate / GST</div>
+          <div class="doc-item"><div class="doc-check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="#C4973A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Partnership Deed / MOA (if applicable)</div>
+        </div>
+      </div>
+
+      <div class="docs-group fu">
+        <div class="dg-head">
+          <div class="dg-icon">🏠</div>
+          <div class="dg-title">Property Documents</div>
+        </div>
+        <div class="dg-list">
+          <div class="doc-item"><div class="doc-check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="#C4973A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Allotment Letter from Builder</div>
+          <div class="doc-item"><div class="doc-check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="#C4973A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Buyer-Builder Agreement / Sale Deed</div>
+          <div class="doc-item"><div class="doc-check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="#C4973A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Approved Building Plan</div>
+          <div class="doc-item"><div class="doc-check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="#C4973A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>NOC from Builder / Society</div>
+          <div class="doc-item"><div class="doc-check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="#C4973A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Receipts of Payments Made to Builder</div>
+        </div>
+      </div>
+
+    </div>
+    <div class="docs-note fu">
+      <strong>Note:</strong> This is a general document list. Specific requirements may vary by bank and loan type. Our advisor will give you a personalised checklist based on your profile — completely free of charge.
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════
+  SECTION 9 — WHY PROPFOLIO FOR LOANS
+  IMAGE: Right side — executive shaking hands with happy client / family
+  Size: 560×480px | Warm, professional
+════════════════════════ -->
+<section id="why">
+  <div class="container">
+    <div class="why-grid">
+      <div class="why-content">
+        <div class="eyebrow fu">Why Choose Propfolio</div>
+        <h2 class="fu">Your Loan. Our Responsibility.</h2>
+        <div class="rule fu"></div>
+        <p class="fu">We are not a bank or a broker — we are your advocate. Our job is to get you the best possible loan, at the lowest possible cost, with the least possible effort from your side.</p>
+        <div class="why-points">
+          <div class="wp fu">
+            <div class="wp-icon">💸</div>
+            <div>
+              <div class="wp-title">Zero Processing Fee — Always</div>
+              <p class="wp-desc">Save ₹10,000 – ₹25,000 on bank processing fees. Exclusively for all Propfolio clients — no hidden charges, ever.</p>
+            </div>
+          </div>
+          <div class="wp fu">
+            <div class="wp-icon">🏅</div>
+            <div>
+              <div class="wp-title">11 Years of Banking Relationships</div>
+              <p class="wp-desc">Our long-standing ties with 15+ banks and NBFCs mean priority processing and better negotiated rates for our clients.</p>
+            </div>
+          </div>
+          <div class="wp fu">
+            <div class="wp-icon">🚪</div>
+            <div>
+              <div class="wp-title">Doorstep Service</div>
+              <p class="wp-desc">Don't want to visit the office? Our loan advisor comes to you — at home, at your workplace, wherever is convenient.</p>
+            </div>
+          </div>
+          <div class="wp fu">
+            <div class="wp-icon">⚡</div>
+            <div>
+              <div class="wp-title">Fast-Track Approvals</div>
+              <p class="wp-desc">Our experienced team knows exactly what each bank needs — reducing back-and-forth and getting your loan approved in as little as 72 hours.</p>
+            </div>
+          </div>
+          <div class="wp fu">
+            <div class="wp-icon">📋</div>
+            <div>
+              <div class="wp-title">End-to-End Documentation Support</div>
+              <p class="wp-desc">From collecting documents to submitting the application — we handle every step, so you never feel lost in paperwork.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="why-img fu">
+        <!--
+          📸 IMAGE PLACEMENT — WHY PROPFOLIO RIGHT
+          Replace with: Propfolio executive and happy client
+          OR: A family smiling outside their new home with keys
+          Size: 560×480px | Warm, professional, outdoors
+        -->
+        <div class="img-ph" style="min-height:480px">
+          📸 Why Propfolio Image<br/>Executive with happy client / family outside new home<br/>
+          <span style="font-size:11px;opacity:.6">560×480px | Warm, professional</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════
+  SECTION 10 — FAQ
+  IMAGE: Left side — optional small graphic / illustration
+  Size: 400×300px | Minimal, friendly
+════════════════════════ -->
+<section id="faq">
+  <div class="container">
+    <div class="faq-grid">
+      <div class="faq-left">
+        <div class="eyebrow fu">Got Questions?</div>
+        <h2 class="fu">Frequently Asked<br/>Questions</h2>
+        <div class="rule fu"></div>
+        <p class="fu">Everything you need to know about home loans — answered simply, without the jargon.</p>
+        <!--
+          📸 IMAGE PLACEMENT — FAQ LEFT (optional)
+          Replace with: Friendly illustration / question graphic
+          OR: Small photo of a family reading loan documents
+          Size: 400×280px
+        -->
+        <div class="faq-img">
+          <div class="img-ph" style="min-height:260px">
+            📸 FAQ Illustration (optional)<br/>Friendly graphic / family with documents<br/>
+            <span style="font-size:11px;opacity:.6">400×280px</span>
+          </div>
+        </div>
+      </div>
+      <div class="faq-list fu">
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span>Is the loan processing fee really zero for Propfolio clients?</span>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-a">Yes, absolutely. Propfolio has negotiated zero processing fee arrangements with our banking partners for all our property clients. This is one of the key benefits of buying your home through Propfolio — you save ₹10,000 to ₹25,000+ that other buyers pay to the bank directly.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span>How much home loan can I get on my salary?</span>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-a">Most banks offer a home loan of 60x your monthly net salary. For example, if your monthly net salary is ₹40,000, you may be eligible for up to ₹24 Lakh. However, this varies by bank, your existing liabilities, and CIBIL score. Our advisors will give you an exact figure based on your profile.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span>What is the minimum CIBIL score required for a home loan?</span>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-a">Most banks require a minimum CIBIL score of 700 for the best interest rates. However, through our NBFC partners, we can assist clients with scores as low as 650. If your score is lower, our team will advise you on ways to improve it quickly before applying.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span>How long does home loan approval take?</span>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-a">With complete documentation, most of our clients receive in-principle loan approval within 48–72 hours. Final loan sanction and disbursement typically takes 7–15 working days depending on the bank and property verification process.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span>Can I get a home loan if I am self-employed?</span>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-a">Yes. We assist self-employed individuals, business owners, and freelancers. Income is assessed based on your ITR (Income Tax Returns) for the last 2–3 years. We work with banks and NBFCs that have flexible criteria for self-employed applicants.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span>What is PMAY and am I eligible for it?</span>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-a">PMAY (Pradhan Mantri Awas Yojana) is a government scheme offering interest subsidy of up to ₹2.67 Lakh for first-time homebuyers in the affordable housing segment. Eligibility depends on your annual household income and whether you have previously owned a pucca house. Our team will check your PMAY eligibility at no charge.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span>Do you charge any fee for your loan assistance service?</span>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-a">No. Propfolio's loan assistance service is completely free for our property clients. We are compensated by our banking partners, which is why we are also able to negotiate zero processing fees for you.</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════
+  SECTION 11 — CONTACT / APPLICATION FORM
+  IMAGE: None — dark CTA section with form
+════════════════════════ -->
+<section id="contact">
+  <div class="contact-wm">LOAN</div>
+  <div class="container">
+    <div class="contact-grid">
+
+      <div class="contact-left">
+        <div class="eyebrow light fu">Apply Today — It's Free</div>
+        <h2 class="fu" style="color:#fff">Get Your Home Loan<br/><em style="font-style:italic;color:var(--gold-light)">Approved in 72 Hours</em></h2>
+        <div class="rule fu"></div>
+        <p class="fu">Fill in the form and our loan advisor will call you back within 2 hours — at no charge, with no obligation.</p>
+
+        <div class="contact-perks fu">
+          <div class="cperk">
+            <div class="cperk-icon">💸</div>
+            <div class="cperk-text"><strong>Zero Processing Fee</strong> — Save ₹10,000–₹25,000</div>
+          </div>
+          <div class="cperk">
+            <div class="cperk-icon">⚡</div>
+            <div class="cperk-text"><strong>Fast-Track Approval</strong> — As quick as 72 hours</div>
+          </div>
+          <div class="cperk">
+            <div class="cperk-icon">🚪</div>
+            <div class="cperk-text"><strong>Doorstep Service</strong> — We come to you</div>
+          </div>
+          <div class="cperk">
+            <div class="cperk-icon">🏦</div>
+            <div class="cperk-text"><strong>15+ Banking Partners</strong> — Best rate guaranteed</div>
+          </div>
+        </div>
+
+        <div class="contact-info fu">
+          <a href="tel:+918010450460" class="ci-link"><span class="ci-icon">📞</span> +91 8010-450-460</a>
+          <a href="https://wa.me/918010450460" class="ci-link"><span class="ci-icon">💬</span> WhatsApp Us</a>
+          <a href="mailto:support@propfolio.in" class="ci-link"><span class="ci-icon">✉️</span> support@propfolio.in</a>
+          <a href="#" class="ci-link"><span class="ci-icon">📍</span> Vihaan Tower, Sector-1, Greater Noida West</a>
+        </div>
+      </div>
+
+      <div class="form-card fu">
+        <h3>Apply for Loan Assistance</h3>
+        <p>Free consultation. Zero processing fee. No obligation.</p>
+        <div class="form-grid">
+          <div class="form-field">
+            <label class="form-label">Full Name *</label>
+            <input class="form-input" type="text" placeholder="Your full name"/>
+          </div>
+          <div class="form-field">
+            <label class="form-label">Phone Number *</label>
+            <input class="form-input" type="tel" placeholder="+91 XXXXX XXXXX"/>
+          </div>
+          <div class="form-field">
+            <label class="form-label">Email Address</label>
+            <input class="form-input" type="email" placeholder="your@email.com"/>
+          </div>
+          <div class="form-field">
+            <label class="form-label">Employment Type *</label>
+            <select class="form-select">
+              <option value="" disabled selected>Select type</option>
+              <option>Salaried</option>
+              <option>Self-Employed / Business</option>
+              <option>NRI</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label class="form-label">Monthly Income (₹)</label>
+            <input class="form-input" type="number" placeholder="e.g. 50000"/>
+          </div>
+          <div class="form-field">
+            <label class="form-label">Loan Amount Required (₹)</label>
+            <input class="form-input" type="number" placeholder="e.g. 3500000"/>
+          </div>
+          <div class="form-field full">
+            <label class="form-label">Property You're Interested In</label>
+            <select class="form-select">
+              <option value="" disabled selected>Select property (optional)</option>
+              <option>Harmony Heights — From ₹29 Lakh</option>
+              <option>Heritage Heights — From ₹34.5 Lakh</option>
+              <option>Metro Apartments — From ₹40.5 Lakh</option>
+              <option>Pearl Vista — From ₹55 Lakh</option>
+              <option>One30 Avenue — Below ₹45 Lakh</option>
+              <option>Vihaan Galaxy — From ₹34 Lakh</option>
+              <option>Duplex Apartments — From ₹43.99 Lakh</option>
+              <option>Other / Not Decided Yet</option>
+            </select>
+          </div>
+          <div class="form-field full">
+            <label class="form-label">Any Specific Requirements or Questions?</label>
+            <textarea class="form-textarea" placeholder="Tell us anything that will help us assist you better..."></textarea>
+          </div>
+        </div>
+        <button class="form-submit">Submit — Get Free Loan Advice →</button>
+        <p class="form-note">By submitting, you agree to be contacted by a Propfolio loan advisor. We never share your data with third parties.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════ FOOTER ════ -->
+<footer>
+  <div class="container">
+    <p>© 2025 <a href="https://www.propfolio.in">Propfolio Pvt. Ltd.</a> | ISO 9001:2015 Certified | Greater Noida West |
+    <a href="tel:+918010450460">+91 8010-450-460</a> |
+    <a href="mailto:support@propfolio.in">support@propfolio.in</a></p>
+  </div>
+</footer>
+
+<script>
+// Mobile menu
+const menuBtn = document.getElementById('menuBtn');
+const mobMenu = document.getElementById('mobMenu');
+menuBtn.addEventListener('click', () => mobMenu.classList.toggle('open'));
+function closeMob(){ mobMenu.classList.remove('open') }
+
+// Scroll fade-up
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('vis') })
+}, { threshold: 0.09 });
+document.querySelectorAll('.fu').forEach(el => obs.observe(el));
+
+// FAQ accordion
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if(!isOpen) item.classList.add('open');
+}
+
+// EMI Calculator
+function calcEMI() {
+  const P = parseFloat(document.getElementById('loanAmt').value);
+  const rAnnual = parseFloat(document.getElementById('intRate').value);
+  const years = parseFloat(document.getElementById('tenure').value);
+  if(!P || !rAnnual || !years) return;
+  const r = rAnnual / 12 / 100;
+  const n = years * 12;
+  const emi = (P * r * Math.pow(1+r,n)) / (Math.pow(1+r,n) - 1);
+  const total = emi * n;
+  const interest = total - P;
+  document.getElementById('emiResult').textContent = '₹ ' + Math.round(emi).toLocaleString('en-IN');
+  document.getElementById('totalResult').textContent = 'For ' + years + ' years';
+  document.getElementById('totalAmt').textContent = '₹ ' + Math.round(total).toLocaleString('en-IN');
+  document.getElementById('interestAmt').textContent = 'Interest: ₹ ' + Math.round(interest).toLocaleString('en-IN');
+}
+</script>
+</body>
+</html>

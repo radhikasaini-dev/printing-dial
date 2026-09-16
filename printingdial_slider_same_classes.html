@@ -1,0 +1,305 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,800;1,9..144,300&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--ink:#141210;--ink2:#3a3530;--muted:#7a746c;--faint:#f5f3ef;--card:#ffffff;--border:#e8e3da;
+--orange:#d4521a;--orange2:#e86e32;--gold:#b8942a;--gold2:#d4aa3a;
+--ff-display:'Fraunces',Georgia,serif;--ff-body:'Plus Jakarta Sans',system-ui,sans-serif;
+--ease-out:cubic-bezier(0.22,1,0.36,1);
+}
+[data-theme=dark]{
+--ink:#f0ece4;--ink2:#c8c0b4;--muted:#8a8078;--faint:#161310;--card:#1e1a16;--border:#2e2820;
+--orange:#f07040;--orange2:#e86e32;--gold:#d4b84a;
+}
+body{background:var(--faint);font-family:var(--ff-body);font-size:16px;color:var(--ink);}
+
+.container{max-width:1180px;margin:0 auto;padding:0 28px;}
+.tag{display:inline-flex;align-items:center;gap:6px;background:rgba(212,82,26,.1);color:var(--orange);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:5px 14px;border-radius:999px;}
+.grad-text{background:linear-gradient(130deg,var(--orange),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease-out),transform .7s var(--ease-out);}
+.reveal.in{opacity:1;transform:none;}
+
+section{padding:80px 0;}
+
+.sec-header{text-align:center;max-width:640px;margin:0 auto 48px;}
+.sec-header h2{font-family:var(--ff-display);font-size:clamp(28px,4vw,46px);font-weight:800;letter-spacing:-.025em;line-height:1.1;margin:14px 0 14px;color:var(--ink);}
+.sec-header h2 em{font-style:italic;font-weight:300;}
+.sec-header p{font-size:16px;color:var(--muted);line-height:1.7;}
+
+.slider-outer{position:relative;}
+.slider-controls{display:flex;align-items:center;gap:10px;justify-content:flex-end;margin-bottom:20px;}
+.slider-btn{width:42px;height:42px;border-radius:50%;border:1.5px solid var(--border);background:var(--card);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;color:var(--ink2);}
+.slider-btn:hover{background:var(--orange);border-color:var(--orange);color:#fff;}
+.slider-btn:active{transform:scale(.95);}
+.slider-btn:disabled{opacity:.3;pointer-events:none;}
+.slider-btn svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;}
+
+.slider-track-wrap{overflow:hidden;border-radius:0;}
+.slider-track{display:flex;gap:16px;transition:transform .48s var(--ease-out);will-change:transform;}
+
+.product-box{flex:0 0 180px;background:var(--card);border:1.5px solid var(--border);border-radius:18px;overflow:hidden;cursor:pointer;transition:all .3s var(--ease-out);text-decoration:none;color:inherit;display:block;position:relative;}
+.product-box::after{content:'';position:absolute;inset:0;border-radius:18px;opacity:0;background:linear-gradient(135deg,rgba(212,82,26,.05),transparent);transition:opacity .3s;pointer-events:none;}
+.product-box:hover{transform:translateY(-6px);border-color:rgba(212,82,26,.4);box-shadow:0 14px 40px rgba(212,82,26,.1);}
+.product-box:hover::after{opacity:1;}
+
+.product-img{width:100%;aspect-ratio:1;background:var(--faint);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.product-img svg{width:70px;height:70px;transition:transform .35s var(--ease-out);}
+.product-box:hover .product-img svg{transform:scale(1.12);}
+
+.srv-badge{position:absolute;top:10px;right:10px;font-size:9.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:6px;}
+.srv-badge.hot{background:rgba(212,82,26,.13);color:var(--orange);}
+.srv-badge.new{background:rgba(184,148,42,.15);color:var(--gold);}
+
+.product-content{padding:14px 16px 18px;}
+.product-content h6{font-family:var(--ff-display);font-weight:600;font-size:15px;color:var(--ink);margin:0 0 4px;line-height:1.25;}
+.product-content p{font-size:12px;color:var(--muted);margin:0;line-height:1.5;}
+.srv-link{display:inline-flex;align-items:center;gap:4px;margin-top:10px;font-size:12px;font-weight:600;color:var(--orange);opacity:0;transform:translateX(-5px);transition:all .25s;}
+.srv-link svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;}
+.product-box:hover .srv-link{opacity:1;transform:none;}
+
+.slider-dots{display:flex;align-items:center;justify-content:center;gap:7px;margin-top:24px;}
+.slider-dot{width:6px;height:6px;border-radius:50%;background:var(--border);transition:all .28s;cursor:pointer;border:none;padding:0;}
+.slider-dot.active{width:22px;border-radius:3px;background:var(--orange);}
+
+.theme-toggle-wrap{display:flex;justify-content:flex-end;padding:16px 0 0;}
+.theme-toggle{width:36px;height:36px;border-radius:10px;border:1.5px solid var(--border);background:var(--card);display:grid;place-items:center;color:var(--muted);cursor:pointer;transition:all .2s;}
+.theme-toggle:hover{border-color:var(--orange);color:var(--orange);}
+.theme-toggle svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;}
+</style>
+
+<div class="container">
+  <div class="theme-toggle-wrap">
+    <button class="theme-toggle" id="themeBtn" aria-label="Toggle dark mode">
+      <svg id="themeIcon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg>
+    </button>
+  </div>
+
+  <section>
+    <div class="sec-header reveal">
+      <span class="tag">What We Print</span>
+      <h2>Our Print <em class="grad-text">Services</em></h2>
+      <p>From quick business cards to full catalogue runs — every format handled with precision presses and premium paper stocks.</p>
+    </div>
+
+    <div class="slider-outer reveal">
+      <div class="slider-controls">
+        <button class="slider-btn" id="sliderPrev" disabled aria-label="Previous">
+          <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button class="slider-btn" id="sliderNext" aria-label="Next">
+          <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+
+      <div class="slider-track-wrap">
+        <div class="slider-track" id="sliderTrack">
+
+          <a href="#" class="product-box">
+            <div class="product-img" style="background:#fde8df;">
+              <span class="srv-badge hot">Popular</span>
+              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="8" y="18" width="48" height="30" rx="4" stroke="#D85A30" stroke-width="2.5"/>
+                <path d="M8 26h48" stroke="#D85A30" stroke-width="2.5"/>
+                <rect x="14" y="32" width="14" height="10" rx="2" fill="#D85A30" opacity=".25"/>
+                <path d="M34 33h14M34 38h10" stroke="#D85A30" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="product-content">
+              <h6>Business Cards</h6>
+              <p>Matte, gloss & textured stocks</p>
+              <div class="srv-link">Order Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+            </div>
+          </a>
+
+          <a href="#" class="product-box">
+            <div class="product-img" style="background:#fdf3df;">
+              <span class="srv-badge new">New</span>
+              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="10" y="12" width="36" height="44" rx="3" stroke="#BA7517" stroke-width="2.5"/>
+                <rect x="18" y="12" width="36" height="44" rx="3" stroke="#BA7517" stroke-width="2.5" opacity=".4"/>
+                <path d="M17 24h22M17 31h22M17 38h14" stroke="#BA7517" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="product-content">
+              <h6>Catalogues & Brochures</h6>
+              <p>Saddle-stitch or perfect bound</p>
+              <div class="srv-link" style="color:#BA7517;">Order Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+            </div>
+          </a>
+
+          <a href="#" class="product-box">
+            <div class="product-img" style="background:#e1f5ee;">
+              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="8" y="14" width="48" height="36" rx="3" stroke="#0F6E56" stroke-width="2.5"/>
+                <path d="M8 22h48" stroke="#0F6E56" stroke-width="2"/>
+                <path d="M14 30h10M14 36h16" stroke="#0F6E56" stroke-width="2" stroke-linecap="round"/>
+                <rect x="36" y="28" width="16" height="10" rx="2" fill="#0F6E56" opacity=".2" stroke="#0F6E56" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <div class="product-content">
+              <h6>Letterhead & Envelopes</h6>
+              <p>All sizes, instant delivery</p>
+              <div class="srv-link" style="color:#0F6E56;">Order Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+            </div>
+          </a>
+
+          <a href="#" class="product-box">
+            <div class="product-img" style="background:#eeedfe;">
+              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="8" y="10" width="48" height="44" rx="3" stroke="#534AB7" stroke-width="2.5"/>
+                <path d="M8 22h48" stroke="#534AB7" stroke-width="2"/>
+                <path d="M20 14h24" stroke="#534AB7" stroke-width="2" stroke-linecap="round"/>
+                <path d="M14 30h36M14 37h28M14 44h20" stroke="#534AB7" stroke-width="1.8" stroke-linecap="round" opacity=".5"/>
+              </svg>
+            </div>
+            <div class="product-content">
+              <h6>Pamphlets & Flyers</h6>
+              <p>Custom sizes, double-sided</p>
+              <div class="srv-link" style="color:#534AB7;">Order Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+            </div>
+          </a>
+
+          <a href="#" class="product-box">
+            <div class="product-img" style="background:#fde8df;">
+              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="14" y="24" width="36" height="24" rx="3" stroke="#993C1D" stroke-width="2.5"/>
+                <path d="M14 36l16-8 20 8" stroke="#993C1D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="32" cy="16" r="6" stroke="#993C1D" stroke-width="2.5"/>
+                <path d="M26 22l-8 2M38 22l8 2" stroke="#993C1D" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="product-content">
+              <h6>Certificates & Awards</h6>
+              <p>Heavyweight with gold foil</p>
+              <div class="srv-link">Order Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+            </div>
+          </a>
+
+          <a href="#" class="product-box">
+            <div class="product-img" style="background:#eaf3de;">
+              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="8" y="8" width="30" height="48" rx="3" stroke="#3B6D11" stroke-width="2.5"/>
+                <rect x="26" y="8" width="30" height="48" rx="3" stroke="#3B6D11" stroke-width="2.5" opacity=".4"/>
+                <path d="M14 20h18M14 27h18M14 34h12" stroke="#3B6D11" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="product-content">
+              <h6>Books & Magazines</h6>
+              <p>Studio-grade colour output</p>
+              <div class="srv-link" style="color:#3B6D11;">Order Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+            </div>
+          </a>
+
+          <a href="#" class="product-box">
+            <div class="product-img" style="background:#faeeda;">
+              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="10" y="14" width="44" height="36" rx="3" stroke="#854F0B" stroke-width="2.5"/>
+                <rect x="18" y="22" width="28" height="20" rx="2" fill="#854F0B" opacity=".12" stroke="#854F0B" stroke-width="1.8"/>
+                <circle cx="27" cy="30" r="3" fill="#854F0B" opacity=".4"/>
+                <path d="M18 42l10-12 8 8 4-4 8 8" stroke="#854F0B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="product-content">
+              <h6>Posters & Signage</h6>
+              <p>A0 to custom large formats</p>
+              <div class="srv-link" style="color:#854F0B;">Order Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+            </div>
+          </a>
+
+          <a href="#" class="product-box">
+            <div class="product-img" style="background:#fbeaf0;">
+              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="14" y="10" width="20" height="30" rx="3" stroke="#993556" stroke-width="2.5"/>
+                <rect x="30" y="10" width="20" height="30" rx="3" stroke="#993556" stroke-width="2.5" opacity=".4"/>
+                <circle cx="32" cy="48" r="5" stroke="#993556" stroke-width="2.5"/>
+                <path d="M32 43v-3" stroke="#993556" stroke-width="2" stroke-linecap="round"/>
+                <path d="M20 20h8M20 26h6" stroke="#993556" stroke-width="1.8" stroke-linecap="round" opacity=".6"/>
+              </svg>
+            </div>
+            <div class="product-content">
+              <h6>Labels & Stickers</h6>
+              <p>Die-cut, roll or sheet form</p>
+              <div class="srv-link" style="color:#993556;">Order Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+            </div>
+          </a>
+
+          <a href="#" class="product-box">
+            <div class="product-img" style="background:#f1efe8;">
+              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="18" y="18" width="28" height="34" rx="3" stroke="#5F5E5A" stroke-width="2.5"/>
+                <circle cx="32" cy="12" r="5" stroke="#5F5E5A" stroke-width="2.5"/>
+                <path d="M32 17v1" stroke="#5F5E5A" stroke-width="2" stroke-linecap="round"/>
+                <path d="M24 30h16M24 37h12" stroke="#5F5E5A" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="product-content">
+              <h6>Garment & Hang Tags</h6>
+              <p>Shaped, laminated or punched</p>
+              <div class="srv-link" style="color:#5F5E5A;">Order Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+            </div>
+          </a>
+
+        </div>
+      </div>
+
+      <div class="slider-dots" id="sliderDots"></div>
+    </div>
+  </section>
+</div>
+
+<script>
+(function(){
+  const html = document.documentElement;
+  const themeBtn = document.getElementById('themeBtn');
+  const themeIcon = document.getElementById('themeIcon');
+  let dark = false;
+  const sunPath = '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+  const moonPath = '<path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/>';
+  themeBtn.addEventListener('click', () => {
+    dark = !dark;
+    html.setAttribute('data-theme', dark ? 'dark' : 'light');
+    themeIcon.innerHTML = dark ? sunPath : moonPath;
+  });
+
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => io.observe(el));
+
+  const track = document.getElementById('sliderTrack');
+  const prevBtn = document.getElementById('sliderPrev');
+  const nextBtn = document.getElementById('sliderNext');
+  const dotsWrap = document.getElementById('sliderDots');
+  const cards = track.querySelectorAll('.product-box');
+  const CARD_W = 180;
+  const GAP = 16;
+  const VISIBLE = 5;
+  const STEP = CARD_W + GAP;
+  const maxIdx = cards.length - VISIBLE;
+  let cur = 0;
+
+  for (let i = 0; i <= maxIdx; i++) {
+    const d = document.createElement('button');
+    d.className = 'slider-dot' + (i === 0 ? ' active' : '');
+    d.setAttribute('aria-label', 'Slide ' + (i + 1));
+    d.addEventListener('click', () => goTo(i));
+    dotsWrap.appendChild(d);
+  }
+
+  function goTo(idx) {
+    cur = Math.max(0, Math.min(idx, maxIdx));
+    track.style.transform = `translateX(-${cur * STEP}px)`;
+    prevBtn.disabled = cur === 0;
+    nextBtn.disabled = cur >= maxIdx;
+    dotsWrap.querySelectorAll('.slider-dot').forEach((d, i) => d.classList.toggle('active', i === cur));
+  }
+
+  prevBtn.addEventListener('click', () => goTo(cur - 1));
+  nextBtn.addEventListener('click', () => goTo(cur + 1));
+  goTo(0);
+})();
+</script>

@@ -1,0 +1,266 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,800;1,9..144,300&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --ink:#141210;--ink2:#3a3530;--muted:#7a746c;--faint:#f5f3ef;--card:#ffffff;--border:#e8e3da;
+  --orange:#d4521a;--orange2:#e86e32;--gold:#b8942a;--gold2:#d4aa3a;
+  --ff-display:'Fraunces',Georgia,serif;--ff-body:'Plus Jakarta Sans',system-ui,sans-serif;
+  --ease-out:cubic-bezier(0.22,1,0.36,1);
+}
+[data-theme=dark]{
+  --ink:#f0ece4;--ink2:#c8c0b4;--muted:#8a8078;--faint:#161310;--card:#1e1a16;--border:#2e2820;
+  --orange:#f07040;--gold2:#d4aa3a;
+}
+
+html,body{width:100%;overflow-x:hidden;}
+body{background:var(--faint);font-family:var(--ff-body);padding:24px 12px;min-height:100vh;}
+
+.container{width:100%;max-width:1180px;margin:0 auto;padding:0 16px;}
+.tag{display:inline-flex;align-items:center;gap:6px;background:rgba(212,82,26,.1);color:var(--orange);font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:5px 14px;border-radius:999px;}
+.grad-text{background:linear-gradient(130deg,var(--orange),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+
+/* theme toggle */
+.tt-wrap{display:flex;justify-content:flex-end;margin-bottom:16px;}
+.theme-toggle{width:36px;height:36px;border-radius:10px;border:1.5px solid var(--border);background:var(--card);display:grid;place-items:center;color:var(--muted);cursor:pointer;transition:all .2s;}
+.theme-toggle:hover{border-color:var(--orange);color:var(--orange);}
+.theme-toggle svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;}
+
+/* section */
+.achievements-section{padding:48px 0 56px;}
+
+/* header */
+.ach-header{text-align:center;margin-bottom:40px;}
+.ach-header h2{font-family:var(--ff-display);font-size:clamp(26px,5vw,50px);font-weight:800;letter-spacing:-.025em;line-height:1.1;color:var(--ink);margin:10px 0 12px;}
+.ach-header h2 em{font-style:italic;font-weight:300;}
+.ach-header p{font-size:14.5px;color:var(--muted);line-height:1.7;max-width:480px;margin:0 auto;}
+
+/* outer card */
+.ach-outer{
+  background:var(--card);
+  border:1.5px solid var(--border);
+  border-radius:20px;
+  padding:24px;
+  box-shadow:0 4px 40px rgba(0,0,0,.05);
+  position:relative;
+  overflow:hidden;
+}
+.ach-outer::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 50% at 50% -5%,rgba(212,82,26,.05),transparent 65%);
+  pointer-events:none;
+}
+
+/* ── THE GRID — always 2 cols on mobile, 4 on desktop ── */
+.ach-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);   /* 2 col default — mobile first */
+  gap:14px;
+  position:relative;
+  z-index:1;
+}
+
+/* 4 columns from 768px up */
+
+@media(min-width:768px){
+  .ach-grid{
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+  }
+  .ach-outer{padding:36px 32px;}
+  .ach-card{min-height:200px;padding:28px 22px 0;}
+  .ach-person-img{width:88px;height:108px;}
+  .achievements-section{padding:64px 0 72px;}
+}
+
+/* stat card */
+.ach-card{
+  position:relative;
+  background:var(--faint);
+  border-radius:14px;
+  padding:20px 16px 0;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  min-height:160px;
+  border:1.5px solid var(--border);
+  border-left:4px solid transparent;
+  transition:border-left-color .3s ease, box-shadow .3s ease, transform .3s var(--ease-out), background .3s;
+  cursor:default;
+}
+.ach-card:hover{
+  border-left-color:var(--orange);
+  box-shadow:0 8px 28px rgba(212,82,26,.13);
+  transform:translateY(-4px);
+  background:var(--card);
+}
+
+/* number */
+.ach-number{
+  font-family:var(--ff-display);
+  font-size:clamp(28px,6vw,48px);
+  font-weight:800;
+  letter-spacing:-.03em;
+  line-height:1;
+  color:var(--ink);
+  display:block;
+}
+.ach-suffix{color:var(--orange);}
+
+/* label */
+.ach-label{
+  font-size:12.5px;
+  font-weight:600;
+  color:var(--muted);
+  line-height:1.4;
+  margin-top:6px;
+}
+
+/* image — bottom right */
+.ach-person-wrap{
+  display:flex;
+  justify-content:flex-end;
+  align-items:flex-end;
+  margin-top:10px;
+}
+.ach-person-img{
+  width:72px;
+  height:88px;
+  object-fit:cover;
+  object-position:top center;
+  border-radius:10px 10px 0 0;
+  display:block;
+  transition:transform .4s var(--ease-out);
+  filter:drop-shadow(0 -2px 8px rgba(0,0,0,.1));
+}
+.ach-card:hover .ach-person-img{transform:translateY(-6px);}
+
+/* count-up animation */
+@keyframes fadeSlideUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.ach-number.visible{animation:fadeSlideUp .55s var(--ease-out) both;}
+</style>
+
+<div>
+  <div class="tt-wrap container">
+    <button class="theme-toggle" id="themeBtn" aria-label="Toggle theme">
+      <svg id="themeIcon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg>
+    </button>
+  </div>
+
+  <section class="achievements-section">
+    <div class="container">
+
+      <div class="ach-header">
+        <span class="tag">Our Achievements</span>
+        <h2>Numbers That <em class="grad-text">Speak Volumes</em></h2>
+        <p>Over 15 years of delivering print excellence across Delhi NCR — here's what we've built together.</p>
+      </div>
+
+      <div class="ach-outer" id="achOuter">
+        <div class="ach-grid">
+
+          <!-- 1 -->
+          <div class="ach-card">
+            <div>
+              <span class="ach-number" data-target="15" data-suffix="+" data-dec="0">15<span class="ach-suffix">+</span></span>
+              <div class="ach-label">Years of<br>Excellence</div>
+            </div>
+            <div class="ach-person-wrap">
+              <img class="ach-person-img"
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=180&h=220&fit=crop&crop=top&q=80"
+                alt="Years of experience" loading="lazy"/>
+            </div>
+          </div>
+
+          <!-- 2 -->
+          <div class="ach-card">
+            <div>
+              <span class="ach-number" data-target="50" data-suffix="K+" data-dec="0">50<span class="ach-suffix">K+</span></span>
+              <div class="ach-label">Happy<br>Customers</div>
+            </div>
+            <div class="ach-person-wrap">
+              <img class="ach-person-img"
+                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=180&h=220&fit=crop&crop=top&q=80"
+                alt="Happy customers" loading="lazy"/>
+            </div>
+          </div>
+
+          <!-- 3 -->
+          <div class="ach-card">
+            <div>
+              <span class="ach-number" data-target="1.4" data-suffix="Cr+" data-dec="1">1.4<span class="ach-suffix">Cr+</span></span>
+              <div class="ach-label">Print Products<br>Delivered</div>
+            </div>
+            <div class="ach-person-wrap">
+              <img class="ach-person-img"
+                src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=180&h=220&fit=crop&crop=top&q=80"
+                alt="Print products" loading="lazy"/>
+            </div>
+          </div>
+
+          <!-- 4 -->
+          <div class="ach-card">
+            <div>
+              <span class="ach-number" data-target="98" data-suffix="%" data-dec="0">98<span class="ach-suffix">%</span></span>
+              <div class="ach-label">Customer<br>Satisfaction</div>
+            </div>
+            <div class="ach-person-wrap">
+              <img class="ach-person-img"
+                src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=180&h=220&fit=crop&crop=top&q=80"
+                alt="Customer satisfaction" loading="lazy"/>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<script>
+(function(){
+  const html = document.documentElement;
+  const themeBtn = document.getElementById('themeBtn');
+  const themeIcon = document.getElementById('themeIcon');
+  let dark = false;
+  const sun = '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+  const moon = '<path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/>';
+  themeBtn.addEventListener('click', () => {
+    dark = !dark;
+    html.setAttribute('data-theme', dark ? 'dark' : 'light');
+    themeIcon.innerHTML = dark ? sun : moon;
+  });
+
+  /* simulate narrow viewport toggle to show mobile layout */
+  const outer = document.getElementById('achOuter');
+  let fired = false;
+  const io = new IntersectionObserver(([e]) => {
+    if (!e.isIntersecting || fired) return;
+    fired = true;
+    outer.querySelectorAll('.ach-number[data-target]').forEach((el, i) => {
+      const target = parseFloat(el.dataset.target);
+      const suffix = el.dataset.suffix || '';
+      const dec    = parseInt(el.dataset.dec || '0');
+      const dur    = 1800;
+      let st = null;
+      setTimeout(() => {
+        el.classList.add('visible');
+        const step = ts => {
+          if (!st) st = ts;
+          const prog = Math.min((ts - st) / dur, 1);
+          const ease = 1 - Math.pow(1 - prog, 4);
+          el.innerHTML = (ease * target).toFixed(dec) +
+            '<span class="ach-suffix">' + suffix + '</span>';
+          if (prog < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      }, i * 150);
+    });
+  }, { threshold: 0.2 });
+
+  io.observe(outer);
+})();
+</script>

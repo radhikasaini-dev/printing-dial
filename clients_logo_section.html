@@ -1,0 +1,86 @@
+
+<style>
+  .section-wrap { display: grid; grid-template-columns: 320px 1fr; gap: 0; min-height: 320px; border-radius: var(--border-radius-lg); overflow: hidden; border: 0.5px solid var(--color-border-tertiary); }
+  .left-panel { background: #1a73e8; padding: 2.5rem 2rem; display: flex; flex-direction: column; justify-content: space-between; }
+  .left-panel h2 { font-size: 26px; font-weight: 500; color: #fff; line-height: 1.3; margin: 0 0 1rem; }
+  .left-panel h2 span { color: #FFD54F; }
+  .left-panel p { font-size: 13px; color: rgba(255,255,255,0.82); line-height: 1.7; margin: 0 0 1.5rem; }
+  .btn-viewall { display: inline-block; background: #fff; color: #1a73e8; font-size: 13px; font-weight: 500; padding: 10px 28px; border-radius: 50px; text-decoration: none; width: fit-content; cursor: pointer; border: none; }
+  .logos-panel { background: var(--color-background-primary); display: grid; grid-template-columns: repeat(3, 1fr); }
+  .logo-cell { display: flex; align-items: center; justify-content: center; border-left: 0.5px solid var(--color-border-tertiary); border-bottom: 0.5px solid var(--color-border-tertiary); padding: 20px 14px; min-height: 90px; transition: background 0.18s; cursor: default; }
+  .logo-cell:hover { background: var(--color-background-secondary); }
+  .logo-cell:nth-child(3n) { }
+  .logo-cell:nth-last-child(-n+3) { border-bottom: none; }
+  .logo-text { font-size: 13px; font-weight: 500; color: var(--color-text-secondary); text-align: center; letter-spacing: 0.01em; line-height: 1.4; }
+  .logo-icon { font-size: 22px; color: var(--color-text-tertiary); margin-bottom: 6px; display: block; }
+  .logo-abbr { font-size: 18px; font-weight: 500; color: var(--color-text-secondary); letter-spacing: 0.06em; }
+  .logo-sub { font-size: 10px; color: var(--color-text-tertiary); margin-top: 2px; }
+  .badge { display: inline-block; font-size: 10px; padding: 2px 7px; border-radius: 20px; margin-bottom: 4px; }
+</style>
+
+<h2 class="sr-only">Our clients — logos of companies we've partnered with to help reach their business goals</h2>
+
+<div class="section-wrap">
+  <div class="left-panel">
+    <div>
+      <div style="font-size:11px; text-transform:uppercase; letter-spacing:0.1em; color:rgba(255,255,255,0.6); margin-bottom:12px; font-weight:500;">Trusted by 500+ brands</div>
+      <h2>Reach Your <span>Business Goals</span> in 2025 with Laserwebmaker</h2>
+      <p>Laserwebmaker has always worked hard to make sure we're getting what you need out of the partnership — not just what may seem like the best result.</p>
+    </div>
+    <button class="btn-viewall" onclick="sendPrompt('Show me all Laserwebmaker client case studies')">View all clients ↗</button>
+  </div>
+
+  <div class="logos-panel">
+
+    <div class="logo-cell" style="flex-direction:column">
+      <i class="ti ti-building-skyscraper logo-icon" aria-hidden="true"></i>
+      <div class="logo-abbr">GCA</div>
+      <div class="logo-sub">Group Colleges Australia</div>
+    </div>
+
+    <div class="logo-cell" style="flex-direction:column">
+      <i class="ti ti-device-mobile logo-icon" aria-hidden="true"></i>
+      <div class="logo-abbr" style="font-size:22px; letter-spacing:0.02em;">vivo</div>
+      <div class="logo-sub">Mobile Technology</div>
+    </div>
+
+    <div class="logo-cell" style="flex-direction:column">
+      <i class="ti ti-trees logo-icon" aria-hidden="true"></i>
+      <div class="logo-abbr" style="font-size:13px; line-height:1.3; text-align:center">Golden<br>Willows</div>
+    </div>
+
+    <div class="logo-cell" style="flex-direction:column">
+      <i class="ti ti-hammer logo-icon" aria-hidden="true"></i>
+      <div class="logo-abbr" style="font-size:12px; text-align:center; line-height:1.3">Hardicon<br>Limited</div>
+    </div>
+
+    <div class="logo-cell" style="flex-direction:column">
+      <i class="ti ti-world logo-icon" aria-hidden="true"></i>
+      <div class="logo-abbr" style="font-size:13px;">intraglobe</div>
+    </div>
+
+    <div class="logo-cell" style="flex-direction:column">
+      <i class="ti ti-bulb logo-icon" aria-hidden="true"></i>
+      <div class="logo-abbr" style="font-size:13px;">BE CRE8V</div>
+      <div class="logo-sub">Go Make Create</div>
+    </div>
+
+    <div class="logo-cell" style="flex-direction:column">
+      <i class="ti ti-home logo-icon" aria-hidden="true"></i>
+      <div class="logo-abbr" style="font-size:13px; line-height:1.3; text-align:center">Hiranandani</div>
+      <div class="logo-sub">creating better communities</div>
+    </div>
+
+    <div class="logo-cell" style="flex-direction:column">
+      <i class="ti ti-needle-thread logo-icon" aria-hidden="true"></i>
+      <div class="logo-abbr" style="font-size:13px;">Diyabati</div>
+    </div>
+
+    <div class="logo-cell" style="flex-direction:column">
+      <i class="ti ti-rocket logo-icon" aria-hidden="true"></i>
+      <div class="logo-abbr" style="font-size:13px;">AstraEdgeX</div>
+      <div class="logo-sub">Innovate. Empower. Deliver.</div>
+    </div>
+
+  </div>
+</div>

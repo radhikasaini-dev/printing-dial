@@ -1,0 +1,99 @@
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+.s { padding: 4rem 1.5rem; }
+.eyebrow { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #185FA5; font-weight: 500; background: #E6F1FB; padding: 5px 12px; border-radius: 50px; margin-bottom: 14px; }
+.eyebrow i { font-size: 13px; }
+.title { font-size: 30px; font-weight: 500; color: var(--color-text-primary); line-height: 1.25; margin-bottom: 10px; }
+.title span { color: #185FA5; }
+.desc { font-size: 13px; color: var(--color-text-secondary); line-height: 1.75; max-width: 520px; margin-bottom: 2.5rem; }
+.wall { display: grid; grid-template-columns: repeat(4, 1fr); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); overflow: hidden; }
+.cell { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 2.5rem 1.5rem; border-right: 0.5px solid var(--color-border-tertiary); border-bottom: 0.5px solid var(--color-border-tertiary); transition: background 0.18s; cursor: default; }
+.cell:nth-child(4n) { border-right: none; }
+.cell:last-child, .cell:nth-child(n+5) { border-bottom: none; }
+.cell:hover { background: #E6F1FB; }
+.cell img { max-width: 120px; max-height: 48px; width: 100%; height: auto; object-fit: contain; filter: grayscale(1); opacity: 0.6; transition: filter 0.25s, opacity 0.25s; }
+.cell:hover img { filter: grayscale(0); opacity: 1; }
+.cell-name { font-size: 11px; color: var(--color-text-tertiary); letter-spacing: 0.04em; text-align: center; }
+.cell:hover .cell-name { color: #185FA5; }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 1.5rem; }
+.stat-card { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 1rem 1.25rem; }
+.stat-num { font-size: 24px; font-weight: 500; color: var(--color-text-primary); line-height: 1; }
+.stat-num em { font-style: normal; color: #185FA5; }
+.stat-lbl { font-size: 11px; color: var(--color-text-tertiary); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 5px; }
+.foot { display: flex; align-items: center; justify-content: space-between; margin-top: 2rem; padding-top: 1.5rem; border-top: 0.5px solid var(--color-border-tertiary); gap: 1rem; flex-wrap: wrap; }
+.foot-text { font-size: 13px; color: var(--color-text-tertiary); }
+.btn { font-size: 13px; font-weight: 500; color: #185FA5; background: #E6F1FB; border: none; padding: 9px 22px; border-radius: 50px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+.btn i { font-size: 14px; }
+.btn:hover { background: #B5D4F4; }
+
+@media (max-width: 640px) {
+  .s { padding: 2.5rem 1rem; }
+  .title { font-size: 22px; }
+  .wall { grid-template-columns: repeat(2, 1fr); }
+  .cell:nth-child(4n) { border-right: 0.5px solid var(--color-border-tertiary); }
+  .cell:nth-child(2n) { border-right: none; }
+  .cell:nth-child(n+3) { border-bottom: none; }
+  .cell:nth-child(-n+2) { border-bottom: 0.5px solid var(--color-border-tertiary); }
+  .cell { padding: 1.75rem 1rem; }
+  .cell img { max-width: 90px; max-height: 36px; }
+  .stats { grid-template-columns: 1fr; }
+  .foot { flex-direction: column; align-items: flex-start; }
+  .btn { width: 100%; justify-content: center; }
+}
+
+@media (min-width: 641px) and (max-width: 900px) {
+  .title { font-size: 26px; }
+  .wall { grid-template-columns: repeat(4, 1fr); }
+  .cell { padding: 2rem 1rem; }
+  .cell img { max-width: 90px; max-height: 38px; }
+  .stats { grid-template-columns: repeat(3, 1fr); }
+}
+</style>
+
+<h2 class="sr-only">Our partners — companies Printing Dial works with to deliver the best results</h2>
+
+<div class="s">
+  <div class="eyebrow"><i class="ti ti-handshake" aria-hidden="true"></i> Partners</div>
+  <h2 class="title">We can't achieve success<br>without our <span>partners</span></h2>
+  <p class="desc">Trusted by businesses across Noida, Delhi NCR &amp; Ghaziabad — from startups to established enterprises. Our partnerships drive quality printing &amp; faster delivery.</p>
+
+  <div class="wall">
+    <div class="cell">
+      <img src="https://www.printingdial.com/images/clients/1.png" alt="LaserWebMaker">
+      <span class="cell-name">LaserWebMaker</span>
+    </div>
+    <div class="cell">
+      <img src="https://www.printingdial.com/images/clients/2.png" alt="Biryanwi.com">
+      <span class="cell-name">Biryanwi.com</span>
+    </div>
+    <div class="cell">
+      <img src="https://www.printingdial.com/images/clients/3.png" alt="Becre8v">
+      <span class="cell-name">Becre8v</span>
+    </div>
+    <div class="cell">
+      <img src="https://www.printingdial.com/images/clients/4.png" alt="Laser Job Work">
+      <span class="cell-name">Laser Job Work</span>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat-card">
+      <div class="stat-num"><em>1,00,000</em>+</div>
+      <div class="stat-lbl">Prints delivered</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num"><em>500</em>+</div>
+      <div class="stat-lbl">Happy customers</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num"><em>#1</em></div>
+      <div class="stat-lbl">Printing company in Noida</div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span class="foot-text">Partnering with the best to deliver the best</span>
+    <button class="btn" onclick="sendPrompt('Show me all Printing Dial partners')"><i class="ti ti-arrow-right" aria-hidden="true"></i> View all partners</button>
+  </div>
+</div>
